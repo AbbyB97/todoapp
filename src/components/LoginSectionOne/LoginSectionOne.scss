@@ -1,0 +1,27 @@
+@import "../LoginPage/LoginPage.scss";
+
+.section-1 {
+    background-color: #27ae60;
+    color: White;
+    width: 100vw;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    @include bp("phone") {
+        height: 30vh;
+    }
+    @include bp("tablet") {
+        height: 100vh;
+    }
+    .logo-container{
+        display: flex;
+        align-items: center;
+    }
+    p{
+        font-size: xx-large;
+    }
+    h3{
+        margin: 1rem;
+    }
+
+}

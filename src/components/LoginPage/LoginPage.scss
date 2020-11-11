@@ -1,0 +1,57 @@
+@import "../App/App.scss";
+.App {
+    .LoginPage {
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+
+            @include bp("phone") {
+                flex-direction: column;
+            }
+
+            @include bp("tablet") {
+                flex-direction: row;
+            }
+
+            // .section-1 {
+            //     background-color: #27ae60;
+            //     color: white;
+            //     width: 100vw;
+
+            //     @include bp("phone") {
+            //         height: 30vh;
+            //     }
+            //     @include bp("tablet") {
+            //         height: 100vh;
+            //     }
+            // }
+            .section-2 {
+                background-color: white;
+
+                width: 100vw;
+                @include bp("phone") {
+                    height: 70vh;
+                }
+                @include bp("tablet") {
+                    height: 100vh;
+                }
+            }
+
+            @include bp("phone") {
+                background-color: orange;
+            }
+
+            @include bp("tablet") {
+                background-color: #27ae60;
+            }
+
+            @include bp("laptop") {
+                // background-color: yellow;
+            }
+
+            @include bp("television") {
+                // background-color: blue;
+            }
+        }
+    }
+}
