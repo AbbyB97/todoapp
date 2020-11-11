@@ -1,0 +1,63 @@
+// General
+body { text-align:center; }
+
+// Mixin for media query breakpoints
+@mixin bp($point) {
+	// the base style is global across all breakpoints
+	// then media queries are applied as the viewport width or display resolution increases
+	
+	// VIEWPORT SIZES
+	$bp-phone: "screen and (min-width: 240px)";       // phone vertically & up
+	$bp-tablet: "screen and (min-width: 640px)";      // tablet vertically & up
+	$bp-laptop: "screen and (min-width: 1024px)";     // laptop & up
+	$bp-television: "screen and (min-width: 1480px)"; // television & up
+	
+	// MEDIA QUERIES
+	@if $point == phone {     // phone
+		@media #{$bp-phone} { @content; }
+	}
+	@if $point == tablet {     // tablet
+		@media #{$bp-tablet} { @content; }
+	}
+	@if $point == laptop {     // laptop
+		@media #{$bp-laptop} { @content; }
+	}
+	@if $point == television {     // television
+		@media #{$bp-television} { @content; }
+	}
+
+} // end mixin bp
+
+div  {
+	width: 100%;
+	color: white;
+	padding: 1em 0;
+	display: block;
+	.phone, .tablet, .laptop, .television {
+		display:block;
+	}
+	@include bp('phone') {
+		.phone { display:block; background: green; } // visible
+		.tablet { display:block; background: gray; }
+		.laptop { display:block; background: gray; }
+		.television { display:block; background: gray; }
+	}
+	@include bp('tablet') {
+		.phone { display:block; background: gray; }
+		.tablet { display:block; background: blue; } // visible
+		.laptop { display:block; background: gray; }
+		.television { display:block; background: gray; }
+	}
+	@include bp('laptop') {
+		.phone { display:block; background: gray; }
+		.tablet { display:block; background: gray; }
+		.laptop { display:block; background: red; } // visible
+		.television { display:block; background: gray; }
+	}
+	@include bp('television') {
+		.phone { display:block; background: gray; }
+		.tablet { display:block; background: gray; }
+		.laptop { display:block; background: gray; }
+		.television { display:block; background: #cc0; } // visible
+	}
+}
