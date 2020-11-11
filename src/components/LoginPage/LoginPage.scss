@@ -1,6 +1,8 @@
 @import "../App/App.scss";
 .App {
     .LoginPage {
+        font-family: 'Open Sans', sans-serif;
+
         .container {
             display: flex;
             justify-content: space-evenly;
@@ -30,7 +32,7 @@
 
                 width: 100vw;
                 @include bp("phone") {
-                    height: 70vh;
+                    height: 80vh;
                 }
                 @include bp("tablet") {
                     height: 100vh;
