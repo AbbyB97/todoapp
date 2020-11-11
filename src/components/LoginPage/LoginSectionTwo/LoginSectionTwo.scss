@@ -1,0 +1,34 @@
+@import "../LoginPage.scss";
+
+.section-2 {
+    background-color: white;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    width: 100vw;
+    @include bp("phone") {
+        height: 80vh;
+    }
+    @include bp("tablet") {
+        height: 100vh;
+    }
+    .login-container {
+        text-align: center;
+        width: 100%;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        background-color: blue;
+        h1 {
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+
+            @include bp("phone") {
+                font-size: 6vw;
+            }
+            @include bp("tablet") {
+                font-size: 3vw;
+            }
+        }
+    }
+}

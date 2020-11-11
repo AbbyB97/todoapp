@@ -1,6 +1,7 @@
 import React from 'react';
 import './LoginPage.scss';
-import LoginSectionOne from '../LoginSectionOne'
+import LoginSectionOne from './LoginSectionOne';
+import LoginSectionTwo from './LoginSectionTwo';
 class LoginPage extends React.Component {
 
     render() {
@@ -8,7 +9,7 @@ class LoginPage extends React.Component {
             <div className="LoginPage">
                 <div className="container">
                     <LoginSectionOne />
-                    <div className="section-2">sec 2</div>
+                    <LoginSectionTwo/>
                 </div>
             </div>
         );
