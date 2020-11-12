@@ -23,12 +23,11 @@
         h1 {
             font-family: "Open Sans", sans-serif;
             font-weight: 600;
-
             @include bp("phone") {
-                font-size: 6vw;
+                font-size: 4vh;
             }
             @include bp("tablet") {
-                font-size: 3vw;
+                font-size: 4.5vh;
             }
         }
         form {
@@ -51,7 +50,7 @@
             display: flex;
             flex-direction: column;
             input {
-                height: 50px;
+                height: 3.5rem;
             }
         }
         .ui.form input {
@@ -59,7 +58,7 @@
         }
         .ui.form button {
             font-size: large;
-            height: 50px;
+            height: 3.5rem;
         }
         
     }

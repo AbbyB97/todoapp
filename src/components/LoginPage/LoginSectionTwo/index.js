@@ -1,5 +1,9 @@
 import React from 'react';
-import './LoginSectionTwo.scss'
+import './LoginSectionTwo.scss';
+import axios from 'axios';
+
+import {connect} from 'react-redux';
+import {login} from '../../../actions'
 class LoginSectionTwo extends React.Component {
     constructor(props) {
         super(props);
@@ -9,6 +13,7 @@ class LoginSectionTwo extends React.Component {
         };
     }
 
+
     handleChangeEmail = (event) => {
         this.setState({ email: event.target.value });
     }
@@ -17,7 +22,27 @@ class LoginSectionTwo extends React.Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        alert('A name was submitted: ' + this.state.email + this.state.password);
+        // alert('A name was submitted: ' + this.state.email + this.state.password);
+        // const article = { email: "eve.holt@reqres.in", password: "cityslicka" };
+        // axios.post('https://reqres.in/api/login', article)
+        //     .then((response) => { console.log(response.data); })
+        //     .catch(error => {
+        //         // this.setState({ errorMessage: error.message });
+        //         console.log('There was an error!', error.message);
+        //     });
+        this.props.login();
+
+    }
+
+    componentDidMount() {
+        // POST request using axios with error handling
+        // const article = { name: "temp",job: "none" };
+        // axios.post('https://reqres.in/api/users', article)
+        //     .then((response) => {console.log(response);})
+        //     .catch(error => {
+        //         this.setState({ errorMessage: error.message });
+        //         console.log('There was an error!', error);
+        //     });
     }
 
     render() {
@@ -40,7 +65,5 @@ class LoginSectionTwo extends React.Component {
             </div>
         );
     }
-
 }
-
-export default LoginSectionTwo;
+export default connect(null,{login})(LoginSectionTwo);
