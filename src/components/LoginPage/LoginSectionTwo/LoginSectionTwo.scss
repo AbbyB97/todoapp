@@ -31,22 +31,36 @@
                 font-size: 3vw;
             }
         }
-        form{
+        form {
+            @include bp("phone") {
+                font-size: 1rem;
+            }
+            @include bp("tablet") {
+                font-size: large;
+            }
             @include bp("phone") {
                 width: 65vw;
             }
             @include bp("tablet") {
+                width: 42vw;
+            }
+            @include bp("laptop") {
                 width: 25vw;
             }
 
             display: flex;
             flex-direction: column;
-            input{
-                height: 5vh;
-                ::placeholder {
-                    color: black;
-                }
+            input {
+                height: 50px;
             }
         }
+        .ui.form input {
+            background-color: #f2f2f2;
+        }
+        .ui.form button {
+            font-size: large;
+            height: 50px;
+        }
+        
     }
 }

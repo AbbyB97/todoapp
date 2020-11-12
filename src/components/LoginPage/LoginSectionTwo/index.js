@@ -34,7 +34,7 @@ class LoginSectionTwo extends React.Component {
                             <input type="text" value={this.state.password} placeholder={"Password"} onChange={this.handleChangePassword} />
                             <i className="lock icon"></i>
                         </div>
-                        <input className="ui field green button" type="submit" value="Submit" />
+                        <button className="ui field green button" type="submit" value="Submit" > Login</button>
                     </form>
                 </div>
             </div>
