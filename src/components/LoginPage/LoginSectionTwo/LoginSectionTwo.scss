@@ -7,7 +7,7 @@
     justify-items: center;
     width: 100vw;
     @include bp("phone") {
-        height: 80vh;
+        height: 50vh;
     }
     @include bp("tablet") {
         height: 100vh;
