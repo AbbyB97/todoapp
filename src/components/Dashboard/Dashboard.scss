@@ -2,6 +2,13 @@
 .App{
     .dashboard{
         background-color: pink;
-    
+        @include bp("phone") {
+            width: 100vw;
+            height: 90vh;
+        }
+        @include bp("tablet") {
+            width: 85vw;
+            height: 100vh;
+        }
     }
 }

@@ -1,15 +1,18 @@
 @import '../App/App.scss';
-
 .App{
-    .create-task{
-        background-color: yellow;
+    .side-bar{
+        background-color: lawngreen;
+
         @include bp("phone") {
             width: 100vw;
-            height: 90vh;
+            height: 10vh;
         }
         @include bp("tablet") {
-            width: 85vw;
+            width: 15vw;
             height: 100vh;
+    
         }
+    
+  
     }
 }

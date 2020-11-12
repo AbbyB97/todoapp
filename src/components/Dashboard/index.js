@@ -8,11 +8,19 @@ const DashBoard = (props) =>{
     const handleCreateTaskButton = () =>{
         history.push('/todoapp/createtask');
     }
+    const handleEditTaskButton = () =>{
+        history.push('/todoapp/edittask');
+    }
+    const handleAnalyticskButton = () =>{
+        history.push('/todoapp/analytics');
+    }
     return(
         <div className="dashboard">
             Dashboard
             <Link to="/todoapp/createtask"><h3>create task</h3></Link>
             <button onClick={handleCreateTaskButton}>goto create task</button>
+            <button onClick={handleEditTaskButton}>goto Edit task</button>
+            <button onClick={handleAnalyticskButton}>goto analytics</button>
         </div>
     );
 }

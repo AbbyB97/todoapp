@@ -1,10 +1,9 @@
-@import '../MediaQuery.scss';
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-body{
+@import "../MediaQuery.scss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+body {
     background-color: white;
     margin: auto;
-	// text-align: center;
-
+    // text-align: center;
 }
 
 // div {
@@ -13,7 +12,13 @@ body{
 // 	// padding: 1em 0;
 // }
 
-.App{
-   
+.App {
+    display: flex;
 
+    @include bp("phone") {
+        flex-direction: column;
+    }
+    @include bp("tablet") {
+        flex-direction: row;
+    }
 }

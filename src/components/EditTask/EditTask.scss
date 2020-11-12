@@ -1,8 +1,8 @@
 @import '../App/App.scss';
 
 .App{
-    .create-task{
-        background-color: yellow;
+    .edit-task{
+        background-color: indianred;
         @include bp("phone") {
             width: 100vw;
             height: 90vh;
