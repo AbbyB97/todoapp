@@ -1,10 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
+import Checkbox from '@material-ui/core/Checkbox';
+import { green } from '@material-ui/core/colors';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import './CreateTask.scss'
 import { createTask } from '../../actions/index'
 import ScreenHeader from '../widgets/ScreenHeader';
 
+
+
+
 const CreateTask = (props) => {
+
     const handleCreateTask = () => {
         props.createTask('temp task', 'temp desc', 'temp tag', 'temp branch', 'temp date', 'temp subtask');
     }
@@ -35,7 +43,7 @@ const CreateTask = (props) => {
                 <div class="ui hidden divider"></div>
 
                 <div className="checkbox-container">
-                    <div >
+                    {/* <div >
                         <input type="checkbox" name="example" />
                         <label >Personal</label>
                     </div>
@@ -46,6 +54,31 @@ const CreateTask = (props) => {
                     <div >
                         <input type="checkbox" name="example" />
                         <label >Miscellaneous</label>
+                    </div> */}
+
+                    <div >
+                        <Checkbox label='My checkbox'
+                            labelStyle={{ color: 'green' }}
+                            iconStyle={{ fill: 'green' }}
+                            inputStyle={{ color: 'green' }}
+                            style={{ color: 'green' }} />
+                            To-do-Task
+                    </div>
+                    <div >
+                        <Checkbox label='My checkbox'
+                            labelStyle={{ color: 'green' }}
+                            iconStyle={{ fill: 'green' }}
+                            inputStyle={{ color: 'green' }}
+                            style={{ color: 'green' }} />
+                            Official
+                    </div>
+                    <div >
+                        <Checkbox label='My checkbox'
+                            labelStyle={{ color: 'green' }}
+                            iconStyle={{ fill: 'green' }}
+                            inputStyle={{ color: 'green' }}
+                            style={{ color: 'green' }} />
+                            Miscellaneous
                     </div>
                 </div>
             </form>

@@ -13,6 +13,15 @@
         }
         .checkbox-container{
             background-color: lightblue;
+            display: flex;
+            width: auto;
+
+            @include bp("phone"){
+                flex-direction: column;
+            }
+            @include bp("tablet"){
+                flex-direction: row;
+            }
             
         }
     }
