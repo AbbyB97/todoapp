@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './EditTask.scss'
+import ScreenHeader from '../widgets/ScreenHeader'
 
 const EditTask = (props) => {
     const handleEditTask = () => {
@@ -8,30 +9,8 @@ const EditTask = (props) => {
     }
     return (
         <div className="edit-task">
+            <ScreenHeader screenName="Edit Task"/>
             <button onClick={handleEditTask}> edit task</button>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-            <h3>Edit task</h3>
-
         </div>
     );
 }
