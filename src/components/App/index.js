@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { connect } from 'react-redux'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 
 import LoginPage from '../LoginPage';
 import DashBoard from '../Dashboard';
@@ -23,15 +23,15 @@ class App extends React.Component {
 
     render() {
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className="App">
                 {this.props.state.login.token !== undefined && <SideBar/>}
-                <Route path="/todoapp" exact component={this.renderMainPage} />
+                <Route path="/" exact component={this.renderMainPage} />
                 <Route path="/todoapp/createtask" exact component={CreateTask} />
                 <Route path="/todoapp/edittask" exact component={EditTask} />
                 <Route path="/todoapp/analytics" exact component={Analytics} />
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }
