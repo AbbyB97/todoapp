@@ -8,8 +8,30 @@ const EditTask = (props) => {
     }
     return (
         <div className="edit-task">
-            Edit task
             <button onClick={handleEditTask}> edit task</button>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+            <h3>Edit task</h3>
+
         </div>
     );
 }

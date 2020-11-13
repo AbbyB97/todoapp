@@ -4,7 +4,12 @@ import '../SideBar/SideBar.scss'
 const SideBar = (props) =>{
 return(
     <div className="side-bar">
-        <h3>side bar</h3>
+        <div className="side-bar-content">
+            <div>item</div>
+            <div>item</div>
+            <div>item</div>
+        
+        </div>
     </div>
 );
 } 

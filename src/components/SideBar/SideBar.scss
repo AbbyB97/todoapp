@@ -2,17 +2,29 @@
 .App{
     .side-bar{
         background-color: lawngreen;
-
         @include bp("phone") {
             width: 100vw;
             height: 10vh;
         }
         @include bp("tablet") {
             width: 15vw;
-            height: 100vh;
+            height: auto;
     
         }
-    
+        .side-bar-content{
+            position: fixed;
+            background-color: yellow;
+            display: flex;
+            @include bp("phone"){
+                width: 100vw;
+                flex-direction: row;
+            }
+            @include bp("tablet"){
+                width: 15vw;
+                flex-direction: column;
+
+            }
+        }
   
     }
 }

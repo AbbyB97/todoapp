@@ -6,7 +6,56 @@ const Analytics = (props) => {
     
     return (
         <div className="analytics">
-            Analytics
+            
+            <h3> Analytics IS SHOWN ============1</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            <h3> Analytics IS SHOWN ============</h3>
+            
         </div>
     );
 }
