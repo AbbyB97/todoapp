@@ -39,7 +39,7 @@ class LoginSectionTwo extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.email !== '' && this.state.password !== '') {
-            this.props.login();
+            this.props.login(this.state.email);
         }
         else {
             if (this.state.email === '') {

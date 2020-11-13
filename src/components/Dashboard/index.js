@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link,useHistory} from 'react-router-dom';
 import '../Dashboard/Dashboard.scss';
+import {logout} from '../../actions'
 
 const DashBoard = (props) =>{
     let history = useHistory();
@@ -14,6 +15,11 @@ const DashBoard = (props) =>{
     const handleAnalyticskButton = () =>{
         history.push('/todoapp/analytics');
     }
+    
+    const handleLogout = () =>{
+        console.log('handle logout');
+        props.logout();
+    }
     return(
         <div className="dashboard">
             Dashboard
@@ -21,6 +27,7 @@ const DashBoard = (props) =>{
             <button onClick={handleCreateTaskButton}>goto create task</button>
             <button onClick={handleEditTaskButton}>goto Edit task</button>
             <button onClick={handleAnalyticskButton}>goto analytics</button>
+            <button onClick={handleLogout}>logout</button>
         </div>
     );
 }
@@ -28,4 +35,4 @@ const DashBoard = (props) =>{
 const mapStateToProps = (state) =>{
     return {state:state}
 }
-export default connect(mapStateToProps)(DashBoard);
+export default connect(mapStateToProps,{logout})(DashBoard);
