@@ -15,20 +15,33 @@ import StaticDatePicker from '../widgets/StaticDatePicker'
 const CreateTask = (props) => {
     const [taskName, setTaskName] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
-    const [taskTag, setTaskTag] = useState('');
+    const [taskTag, setTaskTag] = useState('To-do');
     const [taskTypeCheck, setTaskTypeCheck] = useState([true, false, false]);
     const [taskType, setTaskType] = useState('Personal');
     const [taskDate, setTaskDate] = useState(new Date());
-    const [subTasks, setsubTask] = useState([{subTaskText:'temp 1',isComplete:false}]);
+    const [subTasks, setsubTask] = useState([{subTaskText:'',isComplete:false}]);
 
     const handleCreateTask = () => {
-        // props.createTask('temp task', 'temp desc', 'temp tag', 'temp branch', 'temp date', 'temp subtask');
-        console.log("name", taskName);
-        console.log("desc", taskDescription);
-        console.log("tag", taskTag);
-        console.log("task type ", taskType);
-        console.log("task taskDate ", taskDate);
-        console.log("subtask array",subTasks);
+        if(taskName===''){
+            console.log("task name is mandatory");
+        }
+        else{
+        props.createTask(taskName, taskDescription, taskTag, taskType, taskDate, 
+            subTasks.filter(sbtask => sbtask.subTaskText!== ''));
+            setTaskName('');
+            setTaskDescription('');
+            setTaskTag('To-do');
+            setTaskTypeCheck([true, false, false]);
+            setTaskType('Personal');
+            setTaskDate(new Date());
+            setsubTask([{subTaskText:'',isComplete:false}])
+        }
+        // console.log("name", taskName);
+        // console.log("desc", taskDescription);
+        // console.log("tag", taskTag);
+        // console.log("task type ", taskType);
+        // console.log("task taskDate ", taskDate);
+        // console.log("subtask array",subTasks);
     }
     const subTaskItemChange=(i,e) =>{
         let tasks = [...subTasks];
@@ -57,9 +70,11 @@ const CreateTask = (props) => {
                     style={{ color: 'green' }} />
 
                 <div style={{ marginTop: "1rem" }} className="ui ten wide input field">
-                    <input  value={subTask.subTaskText||''} onChange={(e)=>subTaskItemChange(i,e)} type="text" placeholder="Sub Task 1" />
+                    <input  value={subTask.subTaskText||''} onChange={(e)=>subTaskItemChange(i,e)} type="text" placeholder={`Sub Task ${i+1}`} />
                 </div>
-                <i className="trash large icon grey"></i>
+                {/* trash button onclick function contains afilter that filters the subtask of which delete is pressed and filters it out */}
+                <i style={{cursor:"pointer"}} onClick={()=>{setsubTask(subTasks.filter(sbtask => sbtask!== subTask))}} 
+                    className="trash large icon grey"></i>
             </div>
             
                 ); 
@@ -90,7 +105,7 @@ const CreateTask = (props) => {
                 {/* <div className="ui input">
                 <input style={{ backgroundColor: "#f2f2f2" }} type="text" placeholder="Task name" />
             </div> */}
-                <form className="ui form">
+                <div id="form"className="ui form">
                     <div className="section-one">
                         <div className="eight wide field">
                             <label style={{ color: "#a6a6a6" }}>Enter Task Name</label>
@@ -103,7 +118,9 @@ const CreateTask = (props) => {
 
                         <div className="eight wide field">
                             <label style={{ color: "#a6a6a6" }}>Task Description</label>
-                            <textarea onChange={e => setTaskDescription(e.target.value)}
+                            <textarea 
+                                value={taskDescription}
+                                onChange={e => setTaskDescription(e.target.value)}
                                 style={{ backgroundColor: "#f2f2f2", resize: "none", fontSize: "1rem" }}
                                 rows="2" type="text" placeholder="Task Description" />
                         </div>
@@ -160,7 +177,7 @@ const CreateTask = (props) => {
                     </div>
                     {SubTaskList()}
 
-                </form>
+                </div>
                 <div className="ui hidden divider"></div>
                 <div className="buttons-container">
                     <button style={{ margin: "1rem" }} className="ui button">Cancel</button>

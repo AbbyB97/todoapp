@@ -10,7 +10,7 @@
             width: 85vw;
             height: 100vh;
         }
-        form {
+        #form {
             display: flex;
             @include bp("phone") {
                 flex-direction: column;

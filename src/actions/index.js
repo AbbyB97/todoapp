@@ -19,16 +19,16 @@ export const logout = () => {
 }
 
 
-export const createTask = (taskName, description, tag, branchTo, date, subTask) => {
+export const createTask = (taskName, description, tag, taskType, date, subTask) => {
     return {
         type: 'CREATE_TASK',
         payload: {
             taskName,
             description,
             tag,
-            branchTo,
+            taskType,
             date,
-            subTask: [subTask]
+            subTask: subTask
         }
     }
 }
