@@ -19,7 +19,7 @@ const CreateTask = (props) => {
     const [taskTypeCheck, setTaskTypeCheck] = useState([true, false, false]);
     const [taskType, setTaskType] = useState('To-do');
     const [taskDate, setTaskDate] = useState(new Date());
-    const [subTask, setsubTask] = useState(['temporary','task2']);
+    const [subTasks, setsubTask] = useState(['']);
 
     const handleCreateTask = () => {
         // props.createTask('temp task', 'temp desc', 'temp tag', 'temp branch', 'temp date', 'temp subtask');
@@ -30,6 +30,41 @@ const CreateTask = (props) => {
         console.log("task taskDate ", taskDate);
     }
 
+    const SubTaskList = () => {
+        console.log("images - > ", subTasks);
+        const renderSubTasks = subTasks.map((subTask) => { 
+            return (
+                <div 
+                style={{ display: "flex", width: "100%", alignContent: "center", alignItems: "center", justifyContent: "center" }}>
+                <Checkbox
+                    // label='My checkbox'
+                    // labelStyle={{ color: 'green' }}
+                    // iconStyle={{ fill: 'green' }}
+                    // inputStyle={{ color: 'green' }}
+                    size={"medium"}
+                    style={{ color: 'green' }} />
+
+                <div style={{ marginTop: "1rem" }} class="ui ten wide input field">
+                    <input type="text" placeholder="Sub Task 1" />
+                </div>
+                <i class="trash large icon grey"></i>
+            </div>
+            
+                ); 
+        });
+    
+        return (
+            <div className="section-two">
+                {renderSubTasks}
+                <div onClick={() => setsubTask([...subTasks,"new"])}
+                     style={{ color: "#2185d0", fontSize: "1.4rem", cursor: "pointer" }}>
+                     <i className="plus icon blue"> </i>
+                            Add new sub task
+                        </div>    
+            </div>
+        );
+    
+    }
     // const handleTaskNameCHange = (event) =>{
     //     setTaskName(event.target.value);
     //     console.log('task name',taskName);
@@ -110,29 +145,7 @@ const CreateTask = (props) => {
 
 
                     </div>
-                    <div className="section-two">
-                        <div 
-                            style={{ display: "flex", width: "100%", alignContent: "center", alignItems: "center", justifyContent: "center" }}>
-                            <Checkbox
-                                // label='My checkbox'
-                                // labelStyle={{ color: 'green' }}
-                                // iconStyle={{ fill: 'green' }}
-                                // inputStyle={{ color: 'green' }}
-                                size={"medium"}
-                                style={{ color: 'green' }} />
-
-                            <div style={{ marginTop: "1rem" }} class="ui ten wide input field">
-                                <input type="text" placeholder="Sub Task 1" />
-                            </div>
-                            <i class="trash large icon grey"></i>
-                        </div>
-                        <div 
-                            onClick={() => console.log("subtask add")}
-                            style={{ color: "#2185d0", fontSize: "1.4rem", cursor: "pointer" }}>
-                            <i className="plus icon blue"> </i>
-                            Add new sub task
-                        </div>
-                    </div>
+                    {SubTaskList()}
 
                 </form>
                 <div className="ui hidden divider"></div>
