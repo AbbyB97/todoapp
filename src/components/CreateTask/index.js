@@ -95,9 +95,10 @@ const CreateTask = (props) => {
 
                 </form>
                 <div className="ui hidden divider"></div>
-
-                <button class="ui button">Cancel</button>
+                <div className="buttons-container">
+                <button style={{margin:"1rem"}} class="ui button">Cancel</button>
                 <button class="ui green button">Create</button>
+                </div>
             </div>
         </MuiPickersUtilsProvider>
     );

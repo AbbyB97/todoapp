@@ -55,6 +55,22 @@
                 }
                 background-color: brown;
             }
+          
+        }
+
+        .buttons-container {
+            background-color: chocolate;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            @include bp("phone") {
+                width: 100%;
+            }
+            @include bp("tablet") {
+                width: 50%;
+            }
+
         }
     }
 }
