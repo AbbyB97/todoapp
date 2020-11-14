@@ -29,12 +29,15 @@ const CreateTask = (props) => {
         console.log("task type ", taskType);
         console.log("task taskDate ", taskDate);
     }
-
+    const subTaskItemChange=(i,e) =>{
+        let tasks = [...subTasks];
+        tasks[i] = e.target.value;
+        setsubTask (tasks);
+    }
     const SubTaskList = () => {
-        console.log("images - > ", subTasks);
-        const renderSubTasks = subTasks.map((subTask) => { 
+        const renderSubTasks = subTasks.map((subTask,i) => { 
             return (
-                <div 
+                <div key={i}
                 style={{ display: "flex", width: "100%", alignContent: "center", alignItems: "center", justifyContent: "center" }}>
                 <Checkbox
                     // label='My checkbox'
@@ -45,7 +48,7 @@ const CreateTask = (props) => {
                     style={{ color: 'green' }} />
 
                 <div style={{ marginTop: "1rem" }} class="ui ten wide input field">
-                    <input type="text" placeholder="Sub Task 1" />
+                    <input  value={subTask||''} onChange={(e)=>subTaskItemChange(i,e)} type="text" placeholder="Sub Task 1" />
                 </div>
                 <i class="trash large icon grey"></i>
             </div>
@@ -56,7 +59,7 @@ const CreateTask = (props) => {
         return (
             <div className="section-two">
                 {renderSubTasks}
-                <div onClick={() => setsubTask([...subTasks,"new"])}
+                <div onClick={() => setsubTask([...subTasks,""])}
                      style={{ color: "#2185d0", fontSize: "1.4rem", cursor: "pointer" }}>
                      <i className="plus icon blue"> </i>
                             Add new sub task
@@ -142,8 +145,6 @@ const CreateTask = (props) => {
                         // onDateChanged={()=>{console.log("date changed");}}
                         />
                         <div className="ui hidden divider"></div>
-
-
                     </div>
                     {SubTaskList()}
 
