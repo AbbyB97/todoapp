@@ -18,13 +18,21 @@ const CreateTask = (props) => {
     const [taskTag, setTaskTag] = useState('');
     const [taskTypeCheck, setTaskTypeCheck] = useState([true,false,false]);
     const [taskType, setTaskType] = useState('To-do');
+    const [taskDate, setTaskDate] = useState(new Date());
+
     const handleCreateTask = () => {
         // props.createTask('temp task', 'temp desc', 'temp tag', 'temp branch', 'temp date', 'temp subtask');
         console.log("name" , taskName);
         console.log("desc" , taskDescription);
         console.log("tag" , taskTag);
         console.log("task type " , taskType);
+        console.log("task taskDate " , taskDate);
     }
+    const handleChangeDate = (e, date) =>{
+        setTaskDate(date);
+        console.log('new date',date);
+    }
+
     // const handleTaskNameCHange = (event) =>{
     //     setTaskName(event.target.value);
     //     console.log('task name',taskName);
@@ -97,7 +105,7 @@ const CreateTask = (props) => {
                         </div>
                         <div className="ui hidden divider"></div>
 
-                        <StaticDatePicker 
+                        <StaticDatePicker taskDate = {taskDate} handleChangeDate={setTaskDate}
                         // onDateChanged={()=>{console.log("date changed");}}
                         />
                         <div className="ui hidden divider"></div>

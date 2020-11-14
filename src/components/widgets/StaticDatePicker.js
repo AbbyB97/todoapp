@@ -5,7 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import green from "@material-ui/core/colors/green";
 
 function InlineDatePickerDemo(props) {
-  const [selectedDate, handleDateChange] = useState(new Date());
+  // const [selectedDate, handleDateChange] = useState(new Date());
   const defaultMaterialTheme = createMuiTheme({
     palette: {
       primary: green,
@@ -31,9 +31,10 @@ function InlineDatePickerDemo(props) {
     <Fragment>
       <ThemeProvider theme={defaultMaterialTheme}>
         <DatePicker
+          autoOk
           variant="inline"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={props.taskDate}
+          onChange={props.handleChangeDate}
           orientation="landscape"
         />
       </ThemeProvider>
