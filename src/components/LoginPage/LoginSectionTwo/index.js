@@ -72,8 +72,8 @@ class LoginSectionTwo extends React.Component {
                                 placeholder={"Password"} 
                                 onChange={this.handleChangePassword} />
                             <i className="lock icon"></i>
-                            <div onClick={this.handleEyeClick} class="ui icon input">
-                                <i class="eye link icon"></i>
+                            <div onClick={this.handleEyeClick} className="ui icon input">
+                                <i className="eye link icon"></i>
                             </div>
                         </div>
                         <button className="ui field green button" type="submit" value="Submit" > Login</button>

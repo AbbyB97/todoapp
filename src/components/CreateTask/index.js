@@ -17,7 +17,7 @@ const CreateTask = (props) => {
     const [taskDescription, setTaskDescription] = useState('');
     const [taskTag, setTaskTag] = useState('');
     const [taskTypeCheck, setTaskTypeCheck] = useState([true, false, false]);
-    const [taskType, setTaskType] = useState('To-do');
+    const [taskType, setTaskType] = useState('Personal');
     const [taskDate, setTaskDate] = useState(new Date());
     const [subTasks, setsubTask] = useState([{subTaskText:'temp 1',isComplete:false}]);
 
@@ -56,10 +56,10 @@ const CreateTask = (props) => {
                     onChange={()=>subTaskItemCHeck(i)}
                     style={{ color: 'green' }} />
 
-                <div style={{ marginTop: "1rem" }} class="ui ten wide input field">
+                <div style={{ marginTop: "1rem" }} className="ui ten wide input field">
                     <input  value={subTask.subTaskText||''} onChange={(e)=>subTaskItemChange(i,e)} type="text" placeholder="Sub Task 1" />
                 </div>
-                <i class="trash large icon grey"></i>
+                <i className="trash large icon grey"></i>
             </div>
             
                 ); 
@@ -92,40 +92,43 @@ const CreateTask = (props) => {
             </div> */}
                 <form className="ui form">
                     <div className="section-one">
-                        <div class="eight wide field">
+                        <div className="eight wide field">
                             <label style={{ color: "#a6a6a6" }}>Enter Task Name</label>
                             <input onChange={e => setTaskName(e.target.value)}
                                 value={taskName}
                                 style={{ backgroundColor: "#f2f2f2", fontSize: "1.2rem" }}
                                 type="text" placeholder="Task Name" />
                         </div>
-                        <div class="ui hidden divider"></div>
+                        <div className="ui hidden divider"></div>
 
-                        <div class="eight wide field">
+                        <div className="eight wide field">
                             <label style={{ color: "#a6a6a6" }}>Task Description</label>
                             <textarea onChange={e => setTaskDescription(e.target.value)}
                                 style={{ backgroundColor: "#f2f2f2", resize: "none", fontSize: "1rem" }}
                                 rows="2" type="text" placeholder="Task Description" />
                         </div>
-                        <div class="ui hidden divider"></div>
+                        <div className="ui hidden divider"></div>
 
                         <div className="ui basic buttons">
-                            <button onClick={() => setTaskTag("To-do")} className="ui button">To-Do</button>
-                            <button onClick={() => setTaskTag("In-Progress")} className="ui  button">In-Progress</button>
-                            <button onClick={() => setTaskTag("Done")} className="ui button">Done</button>
+                            <button onClick={() => setTaskTag("To-do")} 
+                                className={taskTag !== "To-do" ? "ui button" : "ui button active"}>
+                                To-Do
+                            </button>
+                            <button onClick={() => setTaskTag("In-Progress")} className={taskTag !== "In-Progress" ? "ui button" : "ui button active"}>In-Progress</button>
+                            <button onClick={() => setTaskTag("Done")} className={taskTag !== "Done" ? "ui button" : "ui button active"}>Done</button>
                         </div>
-                        <div class="ui hidden divider"></div>
+                        <div className="ui hidden divider"></div>
 
                         <div className="checkbox-container">
                             <div >
                                 <Checkbox checked={taskTypeCheck[0]}
-                                    onClick={() => { setTaskTypeCheck([true, false, false]); setTaskType("To-do") }}
+                                    onClick={() => { setTaskTypeCheck([true, false, false]); setTaskType("Personal") }}
                                     // labelStyle={{ color: 'green' }}
                                     // iconStyle={{ fill: 'green' }}
                                     // inputStyle={{ color: 'green' }}
                                     style={{ color: 'green' }}
                                 />
-                            To-do-Task</div>
+                            Personal</div>
                             <div >
                                 <Checkbox checked={taskTypeCheck[1]}
                                     onClick={() => { setTaskTypeCheck([false, true, false]); setTaskType("Official") }}
@@ -160,8 +163,8 @@ const CreateTask = (props) => {
                 </form>
                 <div className="ui hidden divider"></div>
                 <div className="buttons-container">
-                    <button style={{ margin: "1rem" }} class="ui button">Cancel</button>
-                    <button onClick={handleCreateTask} class="ui green button">Create</button>
+                    <button style={{ margin: "1rem" }} className="ui button">Cancel</button>
+                    <button onClick={handleCreateTask} className="ui green button">Create</button>
                 </div>
             </div>
         </MuiPickersUtilsProvider>

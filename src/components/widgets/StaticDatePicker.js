@@ -1,10 +1,10 @@
-import React, { Fragment, useState } from "react";
-import { DatePicker, KeyboardDatePicker } from "@material-ui/pickers";
+import React, { Fragment } from "react";
+import { DatePicker } from "@material-ui/pickers";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import green from "@material-ui/core/colors/green";
 
-function InlineDatePickerDemo(props) {
+function StaticDatePicker(props) {
   // const [selectedDate, handleDateChange] = useState(new Date());
   const defaultMaterialTheme = createMuiTheme({
     palette: {
@@ -43,4 +43,4 @@ function InlineDatePickerDemo(props) {
   );
 }
 
-export default InlineDatePickerDemo;
+export default StaticDatePicker;
