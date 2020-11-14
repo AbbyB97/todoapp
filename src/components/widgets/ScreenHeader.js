@@ -2,7 +2,6 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 
 const ScreenHeader = (props) => {
-    console.log(props);
     let history = useHistory();
 
     return (
