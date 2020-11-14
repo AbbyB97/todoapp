@@ -28,10 +28,6 @@ const CreateTask = (props) => {
         console.log("task type " , taskType);
         console.log("task taskDate " , taskDate);
     }
-    const handleChangeDate = (e, date) =>{
-        setTaskDate(date);
-        console.log('new date',date);
-    }
 
     // const handleTaskNameCHange = (event) =>{
     //     setTaskName(event.target.value);
@@ -105,7 +101,7 @@ const CreateTask = (props) => {
                         </div>
                         <div className="ui hidden divider"></div>
 
-                        <StaticDatePicker taskDate = {taskDate} handleChangeDate={setTaskDate}
+                        <StaticDatePicker taskDate = {taskDate} setTaskDate={setTaskDate}
                         // onDateChanged={()=>{console.log("date changed");}}
                         />
                         <div className="ui hidden divider"></div>

@@ -33,8 +33,9 @@ function InlineDatePickerDemo(props) {
         <DatePicker
           autoOk
           variant="inline"
+          format="dd-MM-yyyy"
           value={props.taskDate}
-          onChange={props.handleChangeDate}
+          onChange={props.setTaskDate}
           orientation="landscape"
         />
       </ThemeProvider>
