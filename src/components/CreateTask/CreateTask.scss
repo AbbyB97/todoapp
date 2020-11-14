@@ -22,7 +22,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                background-color: khaki;
+                // background-color: khaki;
                 @include bp("phone") {
                     width: 100%;
                 }
@@ -31,7 +31,7 @@
                 }
 
                 .checkbox-container {
-                    background-color: lightblue;
+                    // background-color: lightblue;
                     display: flex;
                     width: auto;
 
@@ -53,14 +53,14 @@
                 @include bp("tablet") {
                     width: 50%;
                 }
-                background-color: brown;
+                // background-color: brown;
             }
           
         }
 
         .buttons-container {
             margin-bottom: 8vh;
-            background-color: chocolate;
+            // background-color: chocolate;
             display: flex;
             align-content: center;
             align-items: center;

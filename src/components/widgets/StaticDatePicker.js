@@ -31,6 +31,7 @@ function StaticDatePicker(props) {
     <Fragment>
       <ThemeProvider theme={defaultMaterialTheme}>
         <DatePicker
+          label="Select Date"
           autoOk
           variant="inline"
           format="dd-MM-yyyy"
