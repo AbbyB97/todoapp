@@ -9,7 +9,7 @@ import './CreateTask.scss'
 import { createTask } from '../../actions/index'
 import ScreenHeader from '../widgets/ScreenHeader';
 import StaticDatePicker from '../widgets/StaticDatePicker'
-
+import SnackBar from '../widgets/SnackBar'
 
 
 const CreateTask = (props) => {
@@ -20,10 +20,12 @@ const CreateTask = (props) => {
     const [taskType, setTaskType] = useState('Personal');
     const [taskDate, setTaskDate] = useState(new Date());
     const [subTasks, setsubTask] = useState([{subTaskText:'',isComplete:false}]);
+    const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
 
     const handleCreateTask = () => {
         if(taskName===''){
             console.log("task name is mandatory");
+            alert("mandotory text")
         }
         else{
         props.createTask(taskName, taskDescription, taskTag, taskType, taskDate, 
@@ -34,7 +36,9 @@ const CreateTask = (props) => {
             setTaskTypeCheck([true, false, false]);
             setTaskType('Personal');
             setTaskDate(new Date());
-            setsubTask([{subTaskText:'',isComplete:false}])
+            setsubTask([{subTaskText:'',isComplete:false}]);
+            setIsOpenSnackbar(true);
+
         }
         // console.log("name", taskName);
         // console.log("desc", taskDescription);
@@ -109,7 +113,7 @@ const CreateTask = (props) => {
                     <div className="section-one">
                         <div className="eight wide field">
                             <label style={{ color: "#a6a6a6" }}>Enter Task Name</label>
-                            <input onChange={e => setTaskName(e.target.value)}
+                            <input onChange={e => {setTaskName(e.target.value);setIsOpenSnackbar(false)}}
                                 value={taskName}
                                 style={{ backgroundColor: "#f2f2f2", fontSize: "1.2rem" }}
                                 type="text" placeholder="Task Name" />
@@ -183,6 +187,8 @@ const CreateTask = (props) => {
                     <button style={{ margin: "1rem" }} className="ui button">Cancel</button>
                     <button onClick={handleCreateTask} className="ui green button">Create</button>
                 </div>
+                {/* <SnackBar setIsOpenSnackbar={setIsOpenSnackbar}/> */}
+                {isOpenSnackbar ? <SnackBar isOpenSnackbar={isOpenSnackbar} /> : null}
             </div>
         </MuiPickersUtilsProvider>
     );
