@@ -21,11 +21,16 @@ const CreateTask = (props) => {
     const [taskDate, setTaskDate] = useState(new Date());
     const [subTasks, setsubTask] = useState([{subTaskText:'',isComplete:false}]);
     const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
+    const [errorSnackBar, setErrorSnackBar] = useState(false);
 
+    const disableError = () =>{
+        setErrorSnackBar(false);
+    }
     const handleCreateTask = () => {
         if(taskName===''){
             console.log("task name is mandatory");
-            alert("mandotory text")
+            // alert("mandotory text")
+            setErrorSnackBar(true);
         }
         else{
         props.createTask(taskName, taskDescription, taskTag, taskType, taskDate, 
@@ -111,7 +116,7 @@ const CreateTask = (props) => {
             </div> */}
                 <div id="form"className="ui form">
                     <div className="section-one">
-                        <div className="eight wide field">
+                        <div className="ten wide field">
                             <label style={{ color: "#a6a6a6" }}>Enter Task Name</label>
                             <input onChange={e => {setTaskName(e.target.value);setIsOpenSnackbar(false)}}
                                 value={taskName}
@@ -120,7 +125,7 @@ const CreateTask = (props) => {
                         </div>
                         <div className="ui hidden divider"></div>
 
-                        <div className="eight wide field">
+                        <div className="ten wide field">
                             <label style={{ color: "#a6a6a6" }}>Task Description</label>
                             <textarea 
                                 value={taskDescription}
@@ -188,7 +193,8 @@ const CreateTask = (props) => {
                     <button onClick={handleCreateTask} className="ui green button">Create</button>
                 </div>
                 {/* <SnackBar setIsOpenSnackbar={setIsOpenSnackbar}/> */}
-                {isOpenSnackbar ? <SnackBar isOpenSnackbar={isOpenSnackbar} /> : null}
+                {isOpenSnackbar ? <SnackBar disableError={disableError} isError={false} isOpenSnackbar={isOpenSnackbar} /> : null}
+                {errorSnackBar ? <SnackBar disableError={disableError} isError={true} isOpenSnackbar={errorSnackBar} /> : null}
             </div>
         </MuiPickersUtilsProvider>
     );

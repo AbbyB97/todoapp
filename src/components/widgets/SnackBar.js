@@ -29,7 +29,7 @@ export default function CustomizedSnackbar(props) {
     if (reason === 'clickaway') {
       return;
     }
-
+    props.disableError();
     setOpen(false);
   };
 
@@ -37,9 +37,15 @@ export default function CustomizedSnackbar(props) {
     <div className={classes.root}>
       
       <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
+       
+      {!props.isError ?  <Alert onClose={handleClose} severity="success">Task Added!</Alert> 
+          : <Alert onClose={handleClose} severity="error">Task name is mandatory!</Alert> 
+        }
+
+       
+        {/* <Alert onClose={handleClose} severity="success">
           This is a success message!
-        </Alert>
+        </Alert> */}
       </Snackbar>
     </div>
   );
