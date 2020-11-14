@@ -1,7 +1,7 @@
 @import '../App/App.scss';
 .App{
     .dashboard{
-        background-color: pink;
+        // background-color: pink;
         @include bp("phone") {
             width: 100vw;
             height: 90vh;
@@ -9,6 +9,26 @@
         @include bp("tablet") {
             width: 85vw;
             height: 100vh;
+        }
+        .top-row{
+            display: flex;
+            align-items:center;
+            
+            @include bp("phone") {
+                flex-direction:column;
+            }
+            @include bp("tablet") {
+                flex-direction:row;
+            }
+            input{
+                margin: 0rem;
+                padding: 0%;
+                height: 2.7rem;
+            }
+       
+            .ui.search{
+                width: 65%;
+            }
         }
     }
 }

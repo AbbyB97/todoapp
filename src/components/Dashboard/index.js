@@ -1,38 +1,56 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Link,useHistory} from 'react-router-dom';
-import '../Dashboard/Dashboard.scss';
-import {logout} from '../../actions'
+import React,{useState} from 'react';
+import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { logout } from '../../actions';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
-const DashBoard = (props) =>{
+import '../Dashboard/Dashboard.scss';
+import StaticDatePicker from '../widgets/StaticDatePicker';
+
+const DashBoard = (props) => {
+    const [taskDate, setTaskDate] = useState(new Date());
+
     let history = useHistory();
-    const handleCreateTaskButton = () =>{
+    const handleCreateTaskButton = () => {
         history.push('/todoapp/createtask');
     }
-    const handleEditTaskButton = () =>{
+    const handleEditTaskButton = () => {
         history.push('/todoapp/edittask');
     }
-    const handleAnalyticskButton = () =>{
+    const handleAnalyticskButton = () => {
         history.push('/todoapp/analytics');
     }
-    
-    const handleLogout = () =>{
+
+    const handleLogout = () => {
         console.log('handle logout');
         props.logout();
     }
-    return(
+    return (
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
         <div className="dashboard">
-            Dashboard
-            <Link to="/todoapp/createtask"><h3>create task</h3></Link>
-            <button onClick={handleCreateTaskButton}>goto create task</button>
-            <button onClick={handleEditTaskButton}>goto Edit task</button>
-            <button onClick={handleAnalyticskButton}>goto analytics</button>
-            <button onClick={handleLogout}>logout</button>
+        <div className="ui hidden divider"></div>
+
+            <div className="top-row">
+                <div id="search-bar" className="ui icon input search">
+                    <input style={{paddingLeft:"1rem"}} className="prompt" type="text" placeholder="Search Tasks..." />
+                    <i className="search icon"></i>
+                </div>
+
+                <div>
+                    <button  onClick={handleCreateTaskButton} class="positive ui button">New Task</button>
+                </div>
+                <div>
+                <StaticDatePicker keyboardPicker={true} taskDate={taskDate} setTaskDate={setTaskDate}/>
+                </div>
+            </div>
         </div>
+        </MuiPickersUtilsProvider>
     );
 }
 
-const mapStateToProps = (state) =>{
-    return {state:state}
+const mapStateToProps = (state) => {
+    return { state: state }
 }
-export default connect(mapStateToProps,{logout})(DashBoard);
+export default connect(mapStateToProps, { logout })(DashBoard);
