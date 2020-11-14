@@ -19,7 +19,7 @@ const CreateTask = (props) => {
     const [taskTypeCheck, setTaskTypeCheck] = useState([true, false, false]);
     const [taskType, setTaskType] = useState('To-do');
     const [taskDate, setTaskDate] = useState(new Date());
-    const [subTasks, setsubTask] = useState(['']);
+    const [subTasks, setsubTask] = useState([{subTaskText:'temp 1',isComplete:false}]);
 
     const handleCreateTask = () => {
         // props.createTask('temp task', 'temp desc', 'temp tag', 'temp branch', 'temp date', 'temp subtask');
@@ -28,14 +28,21 @@ const CreateTask = (props) => {
         console.log("tag", taskTag);
         console.log("task type ", taskType);
         console.log("task taskDate ", taskDate);
+        console.log("subtask array",subTasks);
     }
     const subTaskItemChange=(i,e) =>{
         let tasks = [...subTasks];
-        tasks[i] = e.target.value;
+        tasks[i] = {...tasks[i],subTaskText:e.target.value};
+        setsubTask (tasks);
+    }
+    const subTaskItemCHeck=(i) =>{
+        let tasks = [...subTasks];
+        tasks[i] = {...tasks[i],isComplete:!tasks[i].isComplete};
         setsubTask (tasks);
     }
     const SubTaskList = () => {
         const renderSubTasks = subTasks.map((subTask,i) => { 
+            console.log(i);
             return (
                 <div key={i}
                 style={{ display: "flex", width: "100%", alignContent: "center", alignItems: "center", justifyContent: "center" }}>
@@ -45,10 +52,12 @@ const CreateTask = (props) => {
                     // iconStyle={{ fill: 'green' }}
                     // inputStyle={{ color: 'green' }}
                     size={"medium"}
+                    checked={subTask.isComplete}
+                    onChange={()=>subTaskItemCHeck(i)}
                     style={{ color: 'green' }} />
 
                 <div style={{ marginTop: "1rem" }} class="ui ten wide input field">
-                    <input  value={subTask||''} onChange={(e)=>subTaskItemChange(i,e)} type="text" placeholder="Sub Task 1" />
+                    <input  value={subTask.subTaskText||''} onChange={(e)=>subTaskItemChange(i,e)} type="text" placeholder="Sub Task 1" />
                 </div>
                 <i class="trash large icon grey"></i>
             </div>
@@ -59,7 +68,7 @@ const CreateTask = (props) => {
         return (
             <div className="section-two">
                 {renderSubTasks}
-                <div onClick={() => setsubTask([...subTasks,""])}
+                <div onClick={() => setsubTask([...subTasks,{subTaskText:"",isComplete:false}])}
                      style={{ color: "#2185d0", fontSize: "1.4rem", cursor: "pointer" }}>
                      <i className="plus icon blue"> </i>
                             Add new sub task
