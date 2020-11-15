@@ -59,8 +59,17 @@ const DashBoard = (props) => {
                         <StaticDatePicker keyboardPicker={true} taskDate={taskDate} setTaskDate={setTaskDate} />
                     </div>
                 </div>
+                <div className="tasks-container">
+                <div style={{backgroundColor:"red",width:"350px"}}>
                 {renderTaskLists("To-do")}
-
+                </div>
+                <div style={{backgroundColor:"yellow",width:"350px"}}>
+                {renderTaskLists("In-Progress")}
+                </div>
+                <div style={{backgroundColor:"green",width:"350px"}}>
+                {renderTaskLists("Done")}
+                </div>
+                </div>
             </div>
         </MuiPickersUtilsProvider>
     );

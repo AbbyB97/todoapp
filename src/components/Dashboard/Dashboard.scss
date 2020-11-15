@@ -49,5 +49,21 @@
                 }
             }
         }
+        .tasks-container{
+            background-color: royalblue;
+            display: flex;
+            justify-content: space-around;            
+
+            @include bp("phone"){
+                flex-direction: column;
+                align-items: center;
+            }
+            @include bp("laptop") {
+                flex-direction: row;
+                align-items: flex-start ;
+
+            }
+
+        }
     }
 }
