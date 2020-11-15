@@ -42,7 +42,6 @@ const DashBoard = (props) => {
     }
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-
             <div className="dashboard">
                 <div className="ui hidden divider"></div>
 
@@ -59,17 +58,29 @@ const DashBoard = (props) => {
                         <StaticDatePicker keyboardPicker={true} taskDate={taskDate} setTaskDate={setTaskDate} />
                     </div>
                 </div>
+            {props.state.tasks.length !==0 ?
                 <div className="tasks-container">
-                <div style={{backgroundColor:"#f8f8f9",width:"350px",border:"red"}}>
+                <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
+                    <div style={{textAlign:"center",backgroundColor:"#f2c94c",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
+                        <h3 style={{padding:"0.27rem",color:"white"}}>To do</h3>
+                </div>
                 {renderTaskLists("To-do")}
                 </div>
-                <div style={{backgroundColor:"#f8f8f9",width:"350px"}}>
+                <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
+                    <div style={{textAlign:"center",backgroundColor:"#21ba45",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
+                        <h3 style={{padding:"0.27rem",color:"white"}}>In-progress</h3>
+                </div>
                 {renderTaskLists("In-Progress")}
                 </div>
-                <div style={{backgroundColor:"#f8f8f9",width:"350px"}}>
+                <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
+                    <div style={{textAlign:"center",backgroundColor:"#2f80ed",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
+                        <h3 style={{padding:"0.27rem",color:"white"}}>Done</h3>
+                </div>
                 {renderTaskLists("Done")}
                 </div>
-                </div>
+                </div> : null }
+
+            
             </div>
         </MuiPickersUtilsProvider>
     );

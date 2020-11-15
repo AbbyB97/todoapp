@@ -36,9 +36,9 @@
                 @include bp("tablet") {
                     width: max-content;
                 }
-
             }
-       
+
+        
             .ui.search{
                 @include bp("phone"){
                     width: 19rem;
@@ -50,10 +50,10 @@
             }
         }
         .tasks-container{
-            background-color: royalblue;
+            background-color: #ffffff;
             display: flex;
-            justify-content: space-around;            
-
+            justify-content: space-evenly;            
+            margin-top: 1rem;
             @include bp("phone"){
                 flex-direction: column;
                 align-items: center;
