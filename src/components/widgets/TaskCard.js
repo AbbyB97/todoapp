@@ -49,8 +49,8 @@ const TaskCard = ({ task }) => {
         })
     }
     return (
-        <div style={{backgroundColor:"pink" , marginTop:"1rem"}}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{backgroundColor:"pink", margin:"1rem",borderRadius:"0.25rem"}}>
+            <div style={{ marginLeft:"0.5rem", display: "flex", justifyContent: "space-between" }}>
                 {task.tag}
                 <i aria-controls="simple-menu"
                     aria-haspopup="true"
@@ -60,8 +60,8 @@ const TaskCard = ({ task }) => {
                 <CardMenu />
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-                <h4 style={{ marginBottom: "0rem" }}>{task.taskName}</h4>
-                {task.description ? <p style={{marginBottom:"0", color: "gray" }}>{task.description}</p> : null}
+                <h4 style={{ marginLeft:"0.5rem",marginBottom: "0rem" }}>{task.taskName}</h4>
+                {task.description ? <p style={{marginLeft:"0.5rem",marginBottom:"0", color: "gray" }}>{task.description}</p> : null}
                 {task.subTask ? renderSubtask(task.subTask) : null}
 
             </div>

@@ -60,7 +60,7 @@ const DashBoard = (props) => {
                     </div>
                 </div>
                 <div className="tasks-container">
-                <div style={{backgroundColor:"#f8f8f9",width:"350px"}}>
+                <div style={{backgroundColor:"#f8f8f9",width:"350px",border:"red"}}>
                 {renderTaskLists("To-do")}
                 </div>
                 <div style={{backgroundColor:"#f8f8f9",width:"350px"}}>
