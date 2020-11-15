@@ -35,7 +35,7 @@ const DashBoard = (props) => {
         return tagtasks.map((task) => {
             console.log(task);
             return (
-                <TaskCard task={task.taskName + task.tag} />
+                <TaskCard task={task} />
             );
         })
 
@@ -60,13 +60,13 @@ const DashBoard = (props) => {
                     </div>
                 </div>
                 <div className="tasks-container">
-                <div style={{backgroundColor:"red",width:"350px"}}>
+                <div style={{backgroundColor:"#f8f8f9",width:"350px"}}>
                 {renderTaskLists("To-do")}
                 </div>
-                <div style={{backgroundColor:"yellow",width:"350px"}}>
+                <div style={{backgroundColor:"#f8f8f9",width:"350px"}}>
                 {renderTaskLists("In-Progress")}
                 </div>
-                <div style={{backgroundColor:"green",width:"350px"}}>
+                <div style={{backgroundColor:"#f8f8f9",width:"350px"}}>
                 {renderTaskLists("Done")}
                 </div>
                 </div>
