@@ -40,7 +40,7 @@ const TaskCard = ({ task }) => {
                 // iconStyle={{ fill: 'green' }}
                 // inputStyle={{ color: 'green' }}
                 size={"medium"}
-                checked={subTask.isComplete}
+                checked={subT.isComplete}
                 // onChange={()=>subTaskItemCHeck(i)}
                 style={{ color: 'green' }} />
                 <p>{subT.subTaskText}</p>
