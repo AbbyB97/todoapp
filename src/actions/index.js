@@ -18,6 +18,13 @@ export const logout = () => {
     }
 }
 
+export const updateTaskList = (tasks) => {
+    return {
+        type: 'UPDATE_TASKS',
+        payload: tasks
+    }
+}
+
 
 export const createTask = (taskName, description, tag, taskType, date, subTask) => {
     return {
