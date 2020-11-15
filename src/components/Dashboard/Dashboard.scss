@@ -13,6 +13,9 @@
         .top-row{
             display: flex;
             align-items:center;
+            justify-content: space-evenly;
+            
+            height: auto;
             
             @include bp("phone") {
                 flex-direction:column;
@@ -25,9 +28,25 @@
                 padding: 0%;
                 height: 2.7rem;
             }
+            button.positive.ui.button{
+                @include bp("phone"){
+                    width: 18.5rem;
+
+                }
+                @include bp("tablet") {
+                    width: max-content;
+                }
+
+            }
        
             .ui.search{
-                width: 65%;
+                @include bp("phone"){
+                    width: 19rem;
+
+                }
+                @include bp("tablet") {
+                    width: max-content;
+                }
             }
         }
     }
