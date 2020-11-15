@@ -27,9 +27,9 @@ class App extends React.Component {
                 <div className="App">
                 {this.props.state.login.token !== undefined && <SideBar/>}
                 <Route path="/" exact component={this.renderMainPage} />
-                <Route path="/todoapp/createtask" exact component={CreateTask} />
-                <Route path="/todoapp/edittask" exact component={EditTask} />
-                <Route path="/todoapp/analytics" exact component={Analytics} />
+                <Route path="/createtask" exact component={CreateTask} />
+                <Route path="/edittask" exact component={EditTask} />
+                <Route path="/analytics" exact component={Analytics} />
                 </div>
             </HashRouter>
         );

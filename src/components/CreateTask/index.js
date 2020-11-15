@@ -10,7 +10,7 @@ import { createTask } from '../../actions/index'
 import ScreenHeader from '../widgets/ScreenHeader';
 import StaticDatePicker from '../widgets/StaticDatePicker'
 import SnackBar from '../widgets/SnackBar'
-
+import LoginPage from '../LoginPage'
 
 const CreateTask = (props) => {
     const [taskName, setTaskName] = useState('');
@@ -106,98 +106,104 @@ const CreateTask = (props) => {
     //     console.log('task name',taskName);
     // }
 
-    return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-
-            <div className="create-task">
-                <ScreenHeader screenName="Create Task" />
-                {/* <div className="ui input">
-                <input style={{ backgroundColor: "#f2f2f2" }} type="text" placeholder="Task name" />
-            </div> */}
-                <div id="form"className="ui form">
-                    <div className="section-one">
-                        <div className="ten wide field">
-                            <label style={{ color: "#a6a6a6" }}>Enter Task Name</label>
-                            <input onChange={e => {setTaskName(e.target.value);setIsOpenSnackbar(false)}}
-                                value={taskName}
-                                style={{ backgroundColor: "#f2f2f2", fontSize: "1.2rem" }}
-                                type="text" placeholder="Task Name" />
+    if (props.state.login.token === undefined) {
+        return <LoginPage />;
+    }
+    else {
+        return (
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    
+                <div className="create-task">
+                    <ScreenHeader screenName="Create Task" />
+                    {/* <div className="ui input">
+                    <input style={{ backgroundColor: "#f2f2f2" }} type="text" placeholder="Task name" />
+                </div> */}
+                    <div id="form"className="ui form">
+                        <div className="section-one">
+                            <div className="ten wide field">
+                                <label style={{ color: "#a6a6a6" }}>Enter Task Name</label>
+                                <input onChange={e => {setTaskName(e.target.value);setIsOpenSnackbar(false)}}
+                                    value={taskName}
+                                    style={{ backgroundColor: "#f2f2f2", fontSize: "1.2rem" }}
+                                    type="text" placeholder="Task Name" />
+                            </div>
+                            <div className="ui hidden divider"></div>
+    
+                            <div className="ten wide field">
+                                <label style={{ color: "#a6a6a6" }}>Task Description</label>
+                                <textarea 
+                                    value={taskDescription}
+                                    onChange={e => setTaskDescription(e.target.value)}
+                                    style={{ backgroundColor: "#f2f2f2", resize: "none", fontSize: "1rem" }}
+                                    rows="2" type="text" placeholder="Task Description" />
+                            </div>
+                            <div className="ui hidden divider"></div>
+    
+                            <div className="ui basic buttons">
+                                <button onClick={() => setTaskTag("To-do")} 
+                                    className={taskTag !== "To-do" ? "ui button" : "ui button active"}>
+                                    To-Do
+                                </button>
+                                <button onClick={() => setTaskTag("In-Progress")} className={taskTag !== "In-Progress" ? "ui button" : "ui button active"}>In-Progress</button>
+                                <button onClick={() => setTaskTag("Done")} className={taskTag !== "Done" ? "ui button" : "ui button active"}>Done</button>
+                            </div>
+                            <div className="ui hidden divider"></div>
+    
+                            <div className="checkbox-container">
+                                <div >
+                                    <Checkbox checked={taskTypeCheck[0]}
+                                        onClick={() => { setTaskTypeCheck([true, false, false]); setTaskType("Personal") }}
+                                        // labelStyle={{ color: 'green' }}
+                                        // iconStyle={{ fill: 'green' }}
+                                        // inputStyle={{ color: 'green' }}
+                                        style={{ color: 'green' }}
+                                    />
+                                Personal</div>
+                                <div >
+                                    <Checkbox checked={taskTypeCheck[1]}
+                                        onClick={() => { setTaskTypeCheck([false, true, false]); setTaskType("Official") }}
+    
+                                        // labelStyle={{ color: 'green' }}
+                                        // iconStyle={{ fill: 'green' }}
+                                        // inputStyle={{ color: 'green' }}
+                                        style={{ color: 'green' }}
+                                    />
+                                Official
                         </div>
-                        <div className="ui hidden divider"></div>
-
-                        <div className="ten wide field">
-                            <label style={{ color: "#a6a6a6" }}>Task Description</label>
-                            <textarea 
-                                value={taskDescription}
-                                onChange={e => setTaskDescription(e.target.value)}
-                                style={{ backgroundColor: "#f2f2f2", resize: "none", fontSize: "1rem" }}
-                                rows="2" type="text" placeholder="Task Description" />
+                                <div >
+                                    <Checkbox checked={taskTypeCheck[2]}
+                                        onClick={() => { setTaskTypeCheck([false, false, true]); setTaskType("Miscellaneous") }}
+                                        // labelStyle={{ color: 'green' }}
+                                        // iconStyle={{ fill: 'green' }}
+                                        // inputStyle={{ color: 'green' }}
+                                        style={{ color: 'green' }}
+                                    />
+                                Miscellaneous
                         </div>
-                        <div className="ui hidden divider"></div>
-
-                        <div className="ui basic buttons">
-                            <button onClick={() => setTaskTag("To-do")} 
-                                className={taskTag !== "To-do" ? "ui button" : "ui button active"}>
-                                To-Do
-                            </button>
-                            <button onClick={() => setTaskTag("In-Progress")} className={taskTag !== "In-Progress" ? "ui button" : "ui button active"}>In-Progress</button>
-                            <button onClick={() => setTaskTag("Done")} className={taskTag !== "Done" ? "ui button" : "ui button active"}>Done</button>
+                            </div>
+                            <div className="ui hidden divider"></div>
+    
+                            <StaticDatePicker taskDate={taskDate} setTaskDate={setTaskDate}
+                            // onDateChanged={()=>{console.log("date changed");}}
+                            />
+                            <div className="ui hidden divider"></div>
                         </div>
-                        <div className="ui hidden divider"></div>
-
-                        <div className="checkbox-container">
-                            <div >
-                                <Checkbox checked={taskTypeCheck[0]}
-                                    onClick={() => { setTaskTypeCheck([true, false, false]); setTaskType("Personal") }}
-                                    // labelStyle={{ color: 'green' }}
-                                    // iconStyle={{ fill: 'green' }}
-                                    // inputStyle={{ color: 'green' }}
-                                    style={{ color: 'green' }}
-                                />
-                            Personal</div>
-                            <div >
-                                <Checkbox checked={taskTypeCheck[1]}
-                                    onClick={() => { setTaskTypeCheck([false, true, false]); setTaskType("Official") }}
-
-                                    // labelStyle={{ color: 'green' }}
-                                    // iconStyle={{ fill: 'green' }}
-                                    // inputStyle={{ color: 'green' }}
-                                    style={{ color: 'green' }}
-                                />
-                            Official
+                        {SubTaskList()}
+    
                     </div>
-                            <div >
-                                <Checkbox checked={taskTypeCheck[2]}
-                                    onClick={() => { setTaskTypeCheck([false, false, true]); setTaskType("Miscellaneous") }}
-                                    // labelStyle={{ color: 'green' }}
-                                    // iconStyle={{ fill: 'green' }}
-                                    // inputStyle={{ color: 'green' }}
-                                    style={{ color: 'green' }}
-                                />
-                            Miscellaneous
+                    <div className="ui hidden divider"></div>
+                    <div className="buttons-container">
+                        <button style={{ margin: "1rem" }} className="ui button">Cancel</button>
+                        <button onClick={handleCreateTask} className="ui green button">Create</button>
                     </div>
-                        </div>
-                        <div className="ui hidden divider"></div>
-
-                        <StaticDatePicker taskDate={taskDate} setTaskDate={setTaskDate}
-                        // onDateChanged={()=>{console.log("date changed");}}
-                        />
-                        <div className="ui hidden divider"></div>
-                    </div>
-                    {SubTaskList()}
-
+                    {/* <SnackBar setIsOpenSnackbar={setIsOpenSnackbar}/> */}
+                    {isOpenSnackbar ? <SnackBar disableError={disableError} isError={false} isOpenSnackbar={isOpenSnackbar} /> : null}
+                    {errorSnackBar ? <SnackBar disableError={disableError} isError={true} isOpenSnackbar={errorSnackBar} /> : null}
                 </div>
-                <div className="ui hidden divider"></div>
-                <div className="buttons-container">
-                    <button style={{ margin: "1rem" }} className="ui button">Cancel</button>
-                    <button onClick={handleCreateTask} className="ui green button">Create</button>
-                </div>
-                {/* <SnackBar setIsOpenSnackbar={setIsOpenSnackbar}/> */}
-                {isOpenSnackbar ? <SnackBar disableError={disableError} isError={false} isOpenSnackbar={isOpenSnackbar} /> : null}
-                {errorSnackBar ? <SnackBar disableError={disableError} isError={true} isOpenSnackbar={errorSnackBar} /> : null}
-            </div>
-        </MuiPickersUtilsProvider>
-    );
+            </MuiPickersUtilsProvider>
+        );
+    }
+    
 }
 
 const mapStateToProps = (state) => {
