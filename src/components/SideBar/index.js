@@ -10,8 +10,8 @@ const SideBar = (props) =>{
     let history = useHistory();
 
     const handleLogout = () =>{
-        history.push('/');
         props.logout()
+        history.push('/');
     }
     
     return(

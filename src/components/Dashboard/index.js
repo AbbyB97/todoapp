@@ -27,12 +27,15 @@ const DashBoard = (props) => {
         console.log('handle logout');
         props.logout();
     }
-    const renderTaskLists = () => {
+    const renderTaskLists = (tag) => {
         console.log("props.task", props.state.tasks);
-        return props.state.tasks.map((task) => {
+
+        var tagtasks= props.state.tasks.filter(task=>task.tag ===tag)
+
+        return tagtasks.map((task) => {
             console.log(task);
             return (
-                <TaskCard task={task.taskName} />
+                <TaskCard task={task.taskName + task.tag} />
             );
         })
 
@@ -56,7 +59,7 @@ const DashBoard = (props) => {
                         <StaticDatePicker keyboardPicker={true} taskDate={taskDate} setTaskDate={setTaskDate} />
                     </div>
                 </div>
-                {renderTaskLists()}
+                {renderTaskLists("To-do")}
 
             </div>
         </MuiPickersUtilsProvider>
