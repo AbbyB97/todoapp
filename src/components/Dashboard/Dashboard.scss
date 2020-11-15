@@ -13,7 +13,7 @@
         .top-row{
             display: flex;
             align-items:center;
-            justify-content: space-evenly;
+            justify-content: space-between;
             
             height: auto;
             
@@ -45,7 +45,7 @@
 
                 }
                 @include bp("tablet") {
-                    width: max-content;
+                    width: 75%;
                 }
             }
         }
