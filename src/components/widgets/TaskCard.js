@@ -1,12 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux'
-
+import {useHistory} from 'react-router-dom'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Checkbox from '@material-ui/core/Checkbox';
-import {updateTaskList} from '../../actions/index'
+import {updateTaskList} from '../../actions/index';
 
 const TaskCard = ( props ) => {
+    let history = useHistory();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const cardOptionsClick = (event) => {
@@ -26,6 +28,13 @@ const TaskCard = ( props ) => {
         console.log('clicked', operation , '===',task);
         if(operation==='Delete'){
             handleDeleteTask(task);
+        }
+        else{
+            console.log("edittask");
+            history.push({
+                pathname: '/edittask',
+                editableTask: task
+              })
         }
     };
 

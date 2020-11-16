@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-
+import {useHistory} from 'react-router-dom'
 import Checkbox from '@material-ui/core/Checkbox';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
@@ -13,6 +13,7 @@ import SnackBar from '../widgets/SnackBar'
 import LoginPage from '../LoginPage'
 
 const CreateTask = (props) => {
+    let history = useHistory();
     const [taskName, setTaskName] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
     const [taskTag, setTaskTag] = useState('To-do');
@@ -106,7 +107,10 @@ const CreateTask = (props) => {
     // }
 
     if (props.state.login.token === undefined) {
-        return <LoginPage />;
+        return (<LoginPage >
+                {history.push('/')}
+                </LoginPage>
+            );
     }
     else {
         return (
