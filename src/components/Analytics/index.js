@@ -1,33 +1,50 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+
 import './Analytics.scss'
-import {Pie, Doughnut} from 'react-chartjs-2';
+import {Pie} from 'react-chartjs-2';
 
 import ScreenHeader from '../widgets/ScreenHeader'
 
 const Analytics = (props) => {
+    console.log("====== state ",props.state.tasks);
+        
+    var toDoCount = _.countBy(props.state.tasks,  (mTask) =>{
     
+        return mTask.tag === 'To-do';
+
+    });
+    var inProgressCount = _.countBy(props.state.tasks,  (mTask) =>{
+    
+        return mTask.tag === 'In-Progress';
+
+    });
+    var doneCount = _.countBy(props.state.tasks,  (mTask) =>{
+    
+        return mTask.tag === 'Done';
+
+    });
+
+    console.log("todo count === ",toDoCount.true);
+    console.log("doneCount count === ",doneCount.true);
+    console.log("doneCount count === ",inProgressCount.true);
 const chartData = {
-    labels: ['January', 'February', 'March',
-             'April', 'May'],
+    labels: ['To-do', 'In-Progress', 'Done'],
     datasets: [
       {
         label: 'Rainfall',
         backgroundColor: [
-          '#B21F00',
-          '#C9DE00',
-          '#2FDE00',
-          '#00A6B4',
-          '#6800B4'
+          '#f2c94c',
+          '#27ae60',
+          '#2f80ed',
         ],
         hoverBackgroundColor: [
-        '#501800',
-        '#4B5000',
-        '#175000',
-        '#003350',
-        '#35014F'
+        '#cfa936',
+        '#1c7a44',
+        '#1656ab',
         ],
-        data: [65, 59, 80, 81, 56]
+        data: [toDoCount.true, inProgressCount.true, doneCount.true]
       }
     ]
   }
