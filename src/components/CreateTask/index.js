@@ -103,8 +103,8 @@ const CreateTask = (props) => {
             <div className="section-two">
                 {renderSubTasks}
                 <div onClick={() => setsubTask([...subTasks,{subTaskText:"",isComplete:false}])}
-                     style={{ color: "#2185d0", fontSize: "1.4rem", cursor: "pointer" }}>
-                     <i className="plus icon blue"> </i>
+                     style={{ color: "#2185d0", fontSize: "1.2rem", cursor: "pointer" }}>
+                     <i style={{marginTop:"1rem"}} className="plus icon blue"> </i>
                             Add new sub task
                         </div>    
             </div>

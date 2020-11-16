@@ -13,13 +13,15 @@ const SideBar = (props) =>{
         props.logout()
         history.push('/');
     }
-    
+    const handleAnalytics = () =>{
+        history.push('/analytics');
+    }
     return(
     <div className="side-bar">
         <div className="side-bar-content">
             <div>item</div>
-            <div>item</div>
-            <div onClick={handleLogout}>item</div>
+            <div onClick={handleAnalytics}>analytics</div>
+            <div onClick={handleLogout}>logout</div>
         
         </div>
     </div>

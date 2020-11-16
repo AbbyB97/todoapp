@@ -32,9 +32,9 @@ const DashBoard = (props) => {
 
         var tagtasks= props.state.tasks.filter(task=>task.tag ===tag)
 
-        return tagtasks.map((task) => {
+        return tagtasks.map((task,i) => {
             return (
-                <TaskCard task={task} />
+                <TaskCard key={i} task={task} />
             );
         })
 
