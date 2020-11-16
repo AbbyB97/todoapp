@@ -87,7 +87,10 @@ const DashBoard = (props) => {
 
                 </div> 
             {props.state.tasks.length===0?
-            <div style={{margin:"10rem",textAlign:"center"}}> <h1>Please add some tasks</h1></div>
+            // <div style={{marginTop:"5rem",textAlign:"center",backgroundColor:"red"}}> <h2>Please add some tasks!</h2></div>
+            <div style={{textAlign:"center",height:"5rem",backgroundColor:"#9e9e9e",borderTopRightRadius:"0.5rem",borderRadius:"0.5rem",width:"18rem",margin:"auto",marginTop:"5vh"}}>
+                <h3 style={{padding:"1.5rem",color:"white"}}>Please add Some tasks!</h3>
+                </div>
             :
             null
             }
