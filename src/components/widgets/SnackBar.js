@@ -36,10 +36,10 @@ export default function CustomizedSnackbar(props) {
   return (
     <div className={classes.root}>
       
-      <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
        
       {!props.isError ?  <Alert onClose={handleClose} severity="success">Task Added!</Alert> 
-          : <Alert onClose={handleClose} severity="error">Task name is mandatory!</Alert> 
+          : <Alert onClose={handleClose} severity="error">{props.errorMessage}</Alert> 
         }
 
        

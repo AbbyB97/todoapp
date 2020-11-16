@@ -2,12 +2,76 @@
 
 .App{
     .edit-task{
-        background-color: indianred;
         @include bp("phone") {
             width: 100vw;
+            height: 90vh;
         }
         @include bp("tablet") {
             width: 85vw;
+            height: 100vh;
+        }
+        #form {
+            display: flex;
+            @include bp("phone") {
+                flex-direction: column;
+            }
+            @include bp("tablet") {
+                flex-direction: row;
+            }
+            .section-one {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                // background-color: khaki;
+                @include bp("phone") {
+                    width: 100%;
+                }
+                @include bp("tablet") {
+                    width: 50%;
+                }
+
+                .checkbox-container {
+                    // background-color: lightblue;
+                    display: flex;
+                    width: auto;
+
+                    // @include bp("phone") {
+                    //     flex-direction: column;
+                    // }
+                    // @include bp("tablet") {
+                    //     flex-direction: row;
+                    // }
+                }
+            }
+            .section-two {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                @include bp("phone") {
+                    width: 100%;
+                }
+                @include bp("tablet") {
+                    width: 50%;
+                }
+                // background-color: brown;
+            }
+          
+        }
+
+        .buttons-container {
+            margin-bottom: 8vh;
+            // background-color: chocolate;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            @include bp("phone") {
+                width: 100%;
+            }
+            @include bp("tablet") {
+                width: 50%;
+            }
+
         }
     }
 }

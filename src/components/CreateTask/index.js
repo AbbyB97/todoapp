@@ -23,6 +23,7 @@ const CreateTask = (props) => {
     const [subTasks, setsubTask] = useState([{subTaskText:'',isComplete:false}]);
     const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
     const [errorSnackBar, setErrorSnackBar] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const disableError = () =>{
         setErrorSnackBar(false);
@@ -30,6 +31,7 @@ const CreateTask = (props) => {
     const handleCreateTask = () => {
         if(taskName===''){
             // alert("mandotory text")
+            setErrorMessage("Task name is mandatory")
             setErrorSnackBar(true);
         }
         else{
@@ -59,8 +61,16 @@ const CreateTask = (props) => {
     }
     const subTaskItemCHeck=(i) =>{
         let tasks = [...subTasks];
+        console.log('task',tasks[i]);
+        if(tasks[i].subTaskText.trim().length === 0 && tasks[i].isComplete===false){
+            console.log("empty check");
+            setErrorMessage("Enter sub task before checking it as complete");
+
+            setErrorSnackBar(true);
+        }
+        else{
         tasks[i] = {...tasks[i],isComplete:!tasks[i].isComplete};
-        setsubTask (tasks);
+        setsubTask (tasks);}
     }
     const SubTaskList = () => {
         const renderSubTasks = subTasks.map((subTask,i) => { 
@@ -201,7 +211,7 @@ const CreateTask = (props) => {
                     </div>
                     {/* <SnackBar setIsOpenSnackbar={setIsOpenSnackbar}/> */}
                     {isOpenSnackbar ? <SnackBar disableError={disableError} isError={false} isOpenSnackbar={isOpenSnackbar} /> : null}
-                    {errorSnackBar ? <SnackBar disableError={disableError} isError={true} isOpenSnackbar={errorSnackBar} /> : null}
+                    {errorSnackBar ? <SnackBar disableError={disableError} errorMessage={errorMessage} isError={true} isOpenSnackbar={errorSnackBar} /> : null}
                 </div>
             </MuiPickersUtilsProvider>
         );
