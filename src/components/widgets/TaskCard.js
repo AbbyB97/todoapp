@@ -13,12 +13,23 @@ const TaskCard = ( props ) => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = (operation) => {
+    const handleDeleteTask=(dTask)=>{
+        console.log("deleting task ->",dTask);
+        var newState = props.state.tasks.filter((mtask)=> mtask!==dTask)
+        console.log("og state",props.state.tasks);
+        console.log("new state",newState);
+        props.updateTaskList(newState);
+    }
+
+    const handleClose = (operation,{task}) => {
         setAnchorEl(null);
-        console.log("clicked", operation);
+        console.log('clicked', operation , '===',task);
+        if(operation==='Delete'){
+            handleDeleteTask(task);
+        }
     };
 
-    const CardMenu = () => {
+    const CardMenu = (task) => {
         return (
             <Menu
                 id="simple-menu"
@@ -27,8 +38,8 @@ const TaskCard = ( props ) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={() => handleClose("Edit")}>Edit</MenuItem>
-                <MenuItem onClick={() => handleClose("Delete")}>Delete</MenuItem>
+                <MenuItem onClick={() => handleClose('Edit',task)}>Edit</MenuItem>
+                <MenuItem onClick={() => handleClose('Delete',task)}>Delete</MenuItem>
             </Menu>
         );
     }
@@ -75,7 +86,7 @@ const TaskCard = ( props ) => {
                     onClick={cardOptionsClick}
                     style={{ cursor: "pointer",marginTop:"0.5rem" }}
                     class="ellipsis vertical grey icon" />
-                <CardMenu />
+                <CardMenu task={props.task}/>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <h4 style={{ marginLeft:"0.5rem",marginBottom: "0rem" }}>{props.task.taskName}</h4>

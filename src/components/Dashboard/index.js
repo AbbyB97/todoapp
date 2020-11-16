@@ -11,7 +11,6 @@ import StaticDatePicker from '../widgets/StaticDatePicker';
 import TaskCard from '../widgets/TaskCard'
 
 const DashBoard = (props) => {
-    console.log("task contained",find(props.state.tasks,{tag:"To-do"}));
     const [taskDate, setTaskDate] = useState(new Date());
 
     let history = useHistory();
