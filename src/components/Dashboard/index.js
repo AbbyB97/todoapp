@@ -4,12 +4,14 @@ import { Link, useHistory } from 'react-router-dom';
 import { logout } from '../../actions';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import {find} from 'lodash';
 
 import '../Dashboard/Dashboard.scss';
 import StaticDatePicker from '../widgets/StaticDatePicker';
 import TaskCard from '../widgets/TaskCard'
 
 const DashBoard = (props) => {
+    console.log("task contained",find(props.state.tasks,{tag:"To-do"}));
     const [taskDate, setTaskDate] = useState(new Date());
 
     let history = useHistory();
@@ -28,12 +30,10 @@ const DashBoard = (props) => {
         props.logout();
     }
     const renderTaskLists = (tag) => {
-        console.log("props.task", props.state.tasks);
 
         var tagtasks= props.state.tasks.filter(task=>task.tag ===tag)
 
         return tagtasks.map((task) => {
-            console.log(task);
             return (
                 <TaskCard task={task} />
             );
@@ -58,29 +58,41 @@ const DashBoard = (props) => {
                         <StaticDatePicker keyboardPicker={true} taskDate={taskDate} setTaskDate={setTaskDate} />
                     </div>
                 </div>
-            {props.state.tasks.length !==0 ?
                 <div className="tasks-container">
-                <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
-                    <div style={{textAlign:"center",backgroundColor:"#f2c94c",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
-                        <h3 style={{padding:"0.27rem",color:"white"}}>To do</h3>
-                </div>
-                {renderTaskLists("To-do")}
-                </div>
+                { find(props.state.tasks,{tag:"To-do"})? 
+                 <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
+                 <div style={{textAlign:"center",backgroundColor:"#f2c94c",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
+                     <h3 style={{padding:"0.27rem",color:"white"}}>To do</h3>
+             </div>
+             {renderTaskLists("To-do")}
+             </div>
+                : null}
+               
+               { find(props.state.tasks,{tag:"In-Progress"})? 
                 <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
                     <div style={{textAlign:"center",backgroundColor:"#21ba45",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
                         <h3 style={{padding:"0.27rem",color:"white"}}>In-progress</h3>
                 </div>
                 {renderTaskLists("In-Progress")}
                 </div>
+                : null}
+               { find(props.state.tasks,{tag:"Done"})? 
                 <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
                     <div style={{textAlign:"center",backgroundColor:"#2f80ed",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
                         <h3 style={{padding:"0.27rem",color:"white"}}>Done</h3>
                 </div>
                 {renderTaskLists("Done")}
                 </div>
-                </div> : null }
+                : null}
 
+                </div> 
+            {props.state.tasks.length===0?
+            <div style={{margin:"10rem",textAlign:"center"}}> <h1>Please add some tasks</h1></div>
+            :
+            null
+            }
             
+
             </div>
         </MuiPickersUtilsProvider>
     );
