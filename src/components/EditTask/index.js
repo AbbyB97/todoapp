@@ -127,10 +127,14 @@ const EditTask = (props) => {
         }
         else{
           
-            console.log("og state",props.history.location.editableTask);
-            var editableTask = editableTask;
-            // var newState = props.state.tasks.map((mTask)=> mTask===editableTask ? {...editableTask,isComplete : !subTask.isComplete} : sTask)
-            // console.log("newtasklist --",newState);
+            console.log("og state",props.state.tasks);
+            var editableTask = props.history.location.editableTask;
+            var newState = props.state.tasks.map((mTask)=> mTask===editableTask ? {...editableTask,
+                taskName:taskName,description:taskDescription,tag:taskTag,subTask:subTasks,date:taskDate,taskType:taskType} 
+            : mTask)
+            console.log("newtasklist --",newState);
+            props.updateTaskList(newState);
+            history.push('/')
             
         }
     }
