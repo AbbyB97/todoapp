@@ -29,7 +29,7 @@ const CreateTask = (props) => {
         setErrorSnackBar(false);
     }
     const handleCreateTask = () => {
-        if(taskName===''){
+        if(taskName.trim().length===0){
             // alert("mandotory text")
             setErrorMessage("Task name is mandatory")
             setErrorSnackBar(true);

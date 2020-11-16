@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import Checkbox from '@material-ui/core/Checkbox';
+import {updateTaskList} from '../../actions/index';
 
 
 import './EditTask.scss'
@@ -24,6 +25,7 @@ const EditTask = (props) => {
     const [subTasks, setsubTask] = useState([{subTaskText:'',isComplete:false}]);
     const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
     const [errorSnackBar, setErrorSnackBar] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     useEffect(() => {   
@@ -44,6 +46,8 @@ const EditTask = (props) => {
          else{
             setTaskTypeCheck([false, false, true])
          }
+         setTaskDate(editableTask.date)
+         setsubTask(editableTask.subTask);
        }
         }, [props.history.location.editableTask]);
 
@@ -59,9 +63,18 @@ const EditTask = (props) => {
         }
 
         const subTaskItemCHeck=(i) =>{
+            console.log("item check ",i);
             let tasks = [...subTasks];
+
+            if(tasks[i].subTaskText.trim().length === 0 && tasks[i].isComplete===false){
+                console.log("empty check");
+                setErrorMessage("Enter sub task before checking it as complete");
+    
+                setErrorSnackBar(true);
+            }
+            else{
             tasks[i] = {...tasks[i],isComplete:!tasks[i].isComplete};
-            setsubTask (tasks);
+            setsubTask (tasks);}
         }
 
         const SubTaskList = () => {
@@ -107,6 +120,19 @@ const EditTask = (props) => {
 
     const handleEditTask = () => {
         console.log('editTask');
+        if(taskName.trim().length===0){
+            // alert("mandotory text")
+            setErrorMessage("Task name is mandatory")
+            setErrorSnackBar(true);
+        }
+        else{
+          
+            console.log("og state",props.history.location.editableTask);
+            var editableTask = editableTask;
+            // var newState = props.state.tasks.map((mTask)=> mTask===editableTask ? {...editableTask,isComplete : !subTask.isComplete} : sTask)
+            // console.log("newtasklist --",newState);
+            
+        }
     }
 
 
@@ -216,7 +242,7 @@ const EditTask = (props) => {
                     </div>
                     {/* <SnackBar setIsOpenSnackbar={setIsOpenSnackbar}/> */}
                     {isOpenSnackbar ? <SnackBar disableError={disableError} isError={false} isOpenSnackbar={isOpenSnackbar} /> : null}
-                    {errorSnackBar ? <SnackBar disableError={disableError} isError={true} isOpenSnackbar={errorSnackBar} /> : null}
+                    {errorSnackBar ? <SnackBar disableError={disableError} isError={true} errorMessage={errorMessage}  isOpenSnackbar={errorSnackBar} /> : null}
                 </div>
             </MuiPickersUtilsProvider>
     );
@@ -227,4 +253,4 @@ const mapStateToProps = (state) => {
     return { state: state }
 }
 
-export default connect(mapStateToProps)(EditTask);
+export default connect(mapStateToProps,{updateTaskList})(EditTask);
