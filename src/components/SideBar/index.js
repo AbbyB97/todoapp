@@ -19,7 +19,14 @@ const SideBar = (props) =>{
     return(
     <div className="side-bar">
         <div className="side-bar-content">
-            <div>item</div>
+            <div className="profile-container">
+                <img alt="avatar" style={{height:"5rem",width:"5rem"}} src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"></img>
+            <div style={{display:"flex",flexDirection:"column",marginLeft:"0.5rem"}}>
+                   <div ><p>{props.state.login.email}</p></div>
+                   <div ><p>{props.state.login.email.substring(0, props.state.login.email.indexOf('@'))}</p></div> 
+                    
+               </div>
+            </div>
             <div onClick={handleAnalytics}>analytics</div>
             <div onClick={handleLogout}>logout</div>
         
