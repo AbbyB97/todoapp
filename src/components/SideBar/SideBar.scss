@@ -50,11 +50,30 @@
                     border-radius: 100%;
                 }
             }
-            .analytics-container{
-                cursor: pointer;
-                background-color: pink;
-                align-self: center;
+            .sidebar-actions{
+                display: flex;
+                @include bp("phone"){
+                    flex-direction: row;
+                }
+                @include bp("tablet"){
+                    flex-direction:column;
+                }
+                .tasktype-container{
+                    display: flex;
+                    @include bp("phone"){
+                        flex-direction: row;
+                    }
+                    @include bp("tablet"){
+                        flex-direction:column;
+                    }
+                }
+                .analytics-container{
+                    cursor: pointer;
+                    background-color: pink;
+                    align-self: center;
+                }
             }
+            
             .lgout-container{
                 background-color: rebeccapurple;
                 cursor: pointer;

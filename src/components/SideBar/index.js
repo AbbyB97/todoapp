@@ -27,21 +27,28 @@ const SideBar = (props) =>{
                     
                </div>
             </div>
-            <div>
-            <div onClick={()=>{props.showTaskType(['Personal'])}} >
-            Personal 
+                <div className="sidebar-actions">
+                <div className="tasktype-container">
+                    <div>
+                <div onClick={()=>{props.showTaskType(['Personal'])}} >
+                    Personal 
                 </div>
             <div onClick={()=>{props.showTaskType(['Miscellaneous'])}} >
-                Miscellaneous 
+                    Miscellaneous 
                 </div>
+                </div>
+                <div>
             <div onClick={()=>{props.showTaskType(['Official'])}} >
-            Official 
+                    Official 
                 </div>
             <div onClick={()=>{props.showTaskType(['Personal','Official','Miscellaneous'])}} >
-                All 
+                     All 
                 </div>
                 </div>
-            <div className="analytics-container" onClick={handleAnalytics}>analytics</div>
+                </div>
+                <div className="analytics-container" onClick={handleAnalytics}>analytics</div>
+
+                </div>
             <div className="lgout-container" onClick={handleLogout}><img style={{height:"2rem",width:"2rem"}} src="https://cdn.pixabay.com/photo/2014/04/10/17/59/exit-321143_960_720.png" alt="logout"></img></div>
             
         </div>
