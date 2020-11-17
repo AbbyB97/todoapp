@@ -2,7 +2,7 @@ import React from 'react';
 import '../SideBar/SideBar.scss'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+import analyticsImg from '../SideBar/analytics.svg'
 import { logout,showTaskType } from '../../actions';
 
 
@@ -48,7 +48,9 @@ const SideBar = (props) =>{
                 </div>
                 </div>
                 </div>
-                <div className="analytics-container" onClick={handleAnalytics}>Analytics</div>
+                <div className="analytics-container" onClick={handleAnalytics}>
+                    <img alt="analytics" style={{height:"3rem",width:"3rem"}} src={analyticsImg}></img>
+                    </div>
 
                 </div>
             <div className="logout-container" onClick={handleLogout}><img style={{height:"2rem",width:"2rem"}} src="https://cdn.pixabay.com/photo/2014/04/10/17/59/exit-321143_960_720.png" alt="logout"></img></div>

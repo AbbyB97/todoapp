@@ -76,6 +76,7 @@
                 }
                 .tasktype-container{
                     display: flex;
+                    justify-content: space-evenly;
                     @include bp("phone"){
                         flex-direction: row;
                     }
@@ -90,7 +91,19 @@
                     align-self: center;
                     text-align: center;
                     cursor: pointer;
-                    width: 93%;
+                    @include bp("phone"){
+                        width: auto;
+                    }
+                    @include bp("tablet"){
+                        width: 92%;
+                    }
+            
+                    @include bp("laptop"){
+                        width: 75%;
+                    }
+
+                    // width: 10vw;
+
                     border-radius: 0.5rem;
                     padding: 0.5vw;
                     margin:0.5vw;
