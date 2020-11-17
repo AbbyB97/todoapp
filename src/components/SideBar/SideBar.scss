@@ -1,7 +1,8 @@
 @import '../App/App.scss';
 .App{
     .side-bar{
-        background-color: lawngreen;
+
+        background-color: #ffffff;
         @include bp("phone") {
             width: 100vw;
             height: 10vh;
@@ -12,8 +13,11 @@
     
         }
         .side-bar-content{
+        border-right:solid black 1px;
+        border-bottom:solid black 1px;
+
             position: fixed;
-            background-color: yellow;
+            background-color: #ffff;
             display: flex;
             justify-content: space-between;
             z-index: 10;
@@ -30,7 +34,9 @@
 
             }
             .profile-container{
-                background-color: blue;
+                background-color: #ffffff;
+
+                
                 overflow-wrap: anywhere;
                 height:  fit-content;
                 display: flex;
@@ -51,12 +57,17 @@
                 }
             }
             .sidebar-actions{
+                
+                font-size: 1.1rem;
+                
                 display: flex;
                 @include bp("phone"){
                     flex-direction: row;
                 }
                 @include bp("tablet"){
                     flex-direction:column;
+                background-color: #f2f2f2;
+
                 }
                 .tasktype-container{
                     display: flex;
@@ -66,16 +77,23 @@
                     @include bp("tablet"){
                         flex-direction:column;
                     }
+                    @include bp("laptop"){
+                        flex-direction:row;
+                    }
                 }
                 .analytics-container{
-                    cursor: pointer;
-                    background-color: pink;
                     align-self: center;
+                    text-align: center;
+                    cursor: pointer;
+                    width: 93%;
+                    border-radius: 0.5rem;
+                    padding: 0.5vw;
+                    margin:0.5vw;
+                    background-color: #f2c94c;
                 }
             }
             
-            .lgout-container{
-                background-color: rebeccapurple;
+            .logout-container{
                 cursor: pointer;
                 @include bp("phone"){
                     align-self: center;
