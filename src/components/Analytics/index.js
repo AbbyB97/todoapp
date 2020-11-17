@@ -54,7 +54,7 @@ const Analytics = (props) => {
         <div className="analytics">
             <ScreenHeader screenName="Analytics" />
             {props.state.tasks.length!==0?
-                <div>
+                <div style={{height:"65vh"}}>
                 <Pie
                     data={chartData}
                     options={{
@@ -70,6 +70,7 @@ const Analytics = (props) => {
                             usePointStyle: true
                             }
                         },
+                        maintainAspectRatio: false
                     }}
                 />
             </div>
