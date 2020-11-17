@@ -5,8 +5,7 @@ const ScreenHeader = (props) => {
     let history = useHistory();
 
     return (
-        <div>
-            <div className="ui hidden divider"></div>
+        <div style={{marginTop:"1rem"}}>
             <h2 className="ui header">
                 <i onClick={()=>{history.push('/')}} className="arrow left icon" style={{fontSize:"1.5rem",cursor:"pointer"}}></i>
                 <div className="content">{props.screenName}</div>
