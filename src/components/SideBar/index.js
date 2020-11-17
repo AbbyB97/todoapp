@@ -31,19 +31,19 @@ const SideBar = (props) =>{
                 <div className="tasktype-container">
                     <div>
 
-                    <div style={{color:"white",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#2f80ed",cursor:"pointer"}}  onClick={()=>{props.showTaskType(['Personal','Official','Miscellaneous'])}} >
+                    <div style={{textAlign:"center",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#2f80ed",cursor:"pointer"}}  onClick={()=>{props.showTaskType(['Personal','Official','Miscellaneous'])}} >
                      All 
                 </div>
-                <div style={{color:"white",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#21ba45",cursor:"pointer"}} onClick={()=>{props.showTaskType(['Personal'])}} >
+                <div style={{textAlign:"center",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#21ba45",cursor:"pointer"}} onClick={()=>{props.showTaskType(['Personal'])}} >
                     Personal 
                 </div>
           
                 </div>
                 <div>
-            <div style={{color:"white",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#9b51e0",cursor:"pointer"}}  onClick={()=>{props.showTaskType(['Official'])}} >
+            <div style={{textAlign:"center",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#9b51e0",cursor:"pointer"}}  onClick={()=>{props.showTaskType(['Official'])}} >
                     Official 
                 </div>
-                <div style={{color:"white",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#f2994a",cursor:"pointer"}} onClick={()=>{props.showTaskType(['Miscellaneous'])}} >
+                <div style={{textAlign:"center",borderRadius:"0.5rem",padding:"0.5vw",margin:"0.5vw",background:"#f2994a",cursor:"pointer"}} onClick={()=>{props.showTaskType(['Miscellaneous'])}} >
                     Misc.
                 </div>
                 </div>

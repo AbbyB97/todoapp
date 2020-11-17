@@ -60,13 +60,18 @@
                 
                 font-size: 1.1rem;
                 
+
                 display: flex;
                 @include bp("phone"){
                     flex-direction: row;
+                color: black;
+
                 }
                 @include bp("tablet"){
                     flex-direction:column;
                 background-color: #f2f2f2;
+                color: white;
+
 
                 }
                 .tasktype-container{
@@ -90,7 +95,6 @@
                     padding: 0.5vw;
                     margin:0.5vw;
                     background-color: #f2c94c;
-                    color: white;
                 }
             }
             
