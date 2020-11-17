@@ -53,7 +53,8 @@ const Analytics = (props) => {
     return (
         <div className="analytics">
             <ScreenHeader screenName="Analytics" />
-            <div>
+            {props.state.tasks.length!==0?
+                <div>
                 <Pie
                     data={chartData}
                     options={{
@@ -72,6 +73,11 @@ const Analytics = (props) => {
                     }}
                 />
             </div>
+        :<div style={{marginTop:"5rem",textAlign:"center"}}>
+            <h2>Please add some tasks</h2>
+        </div>    
+        }
+            
         </div>
     );
 }

@@ -34,6 +34,8 @@
                 overflow-wrap: anywhere;
                 height:  fit-content;
                 display: flex;
+                align-items: center;
+
                 @include bp("phone"){
                     flex-direction: row;
                 }
@@ -46,6 +48,26 @@
                 img{
                     margin: 0.2rem;
                     border-radius: 100%;
+                }
+            }
+            .analytics-container{
+                cursor: pointer;
+                background-color: pink;
+                @include bp("phone"){
+                    align-self: center;
+                }
+                @include bp("tablet"){
+                    align-self: flex-start;
+                }
+            }
+            .lgout-container{
+                background-color: rebeccapurple;
+                cursor: pointer;
+                @include bp("phone"){
+                    align-self: center;
+                }
+                @include bp("tablet"){
+                    align-self: flex-start;
                 }
             }
         }
