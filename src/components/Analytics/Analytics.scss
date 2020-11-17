@@ -2,7 +2,7 @@
 
 .App{
     .analytics{
-        background-color: lightgray;
+        background-color: white;
         @include bp("phone") {
             width: 100vw;
         }
