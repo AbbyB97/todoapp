@@ -3,7 +3,7 @@ import '../SideBar/SideBar.scss'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { logout } from '../../actions';
+import { logout,showTaskType } from '../../actions';
 
 
 const SideBar = (props) =>{
@@ -27,11 +27,19 @@ const SideBar = (props) =>{
                     
                </div>
             </div>
-            <div >
-                All
-                Personal 
-                Official
+            <div>
+            <div onClick={()=>{props.showTaskType(['Personal'])}} >
+            Personal 
+                </div>
+            <div onClick={()=>{props.showTaskType(['Miscellaneous'])}} >
                 Miscellaneous 
+                </div>
+            <div onClick={()=>{props.showTaskType(['Official'])}} >
+            Official 
+                </div>
+            <div onClick={()=>{props.showTaskType(['Personal','Official','Miscellaneous'])}} >
+                All 
+                </div>
                 </div>
             <div className="analytics-container" onClick={handleAnalytics}>analytics</div>
             <div className="lgout-container" onClick={handleLogout}><img style={{height:"2rem",width:"2rem"}} src="https://cdn.pixabay.com/photo/2014/04/10/17/59/exit-321143_960_720.png" alt="logout"></img></div>
@@ -44,4 +52,4 @@ const SideBar = (props) =>{
 const mapStateToProps = (state) => {
     return { state: state }
 }
-export default connect(mapStateToProps, { logout })(SideBar);
+export default connect(mapStateToProps, { logout ,showTaskType})(SideBar);

@@ -25,6 +25,13 @@ export const updateTaskList = (tasks) => {
     }
 }
 
+export const showTaskType = (typesArray) => {
+    return {
+        type: 'UPDATE_SHOW_LIST',
+        payload: typesArray
+    }
+}
+
 
 export const createTask = (taskName, description, tag, taskType, date, subTask) => {
     return {
