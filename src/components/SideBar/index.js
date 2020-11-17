@@ -27,6 +27,12 @@ const SideBar = (props) =>{
                     
                </div>
             </div>
+            <div >
+                All
+                Personal 
+                Official
+                Miscellaneous 
+                </div>
             <div className="analytics-container" onClick={handleAnalytics}>analytics</div>
             <div className="lgout-container" onClick={handleLogout}><img style={{height:"2rem",width:"2rem"}} src="https://cdn.pixabay.com/photo/2014/04/10/17/59/exit-321143_960_720.png" alt="logout"></img></div>
             

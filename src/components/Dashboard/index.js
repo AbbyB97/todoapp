@@ -12,6 +12,7 @@ import TaskCard from '../widgets/TaskCard'
 
 const DashBoard = (props) => {
     const [taskDate, setTaskDate] = useState(new Date());
+    // const [Show, setShow] = useState(['Personal','Official','Miscellaneous']);
 
     let history = useHistory();
     const handleCreateTaskButton = () => {
@@ -30,7 +31,7 @@ const DashBoard = (props) => {
     }
     const renderTaskLists = (tag) => {
 
-        var tagtasks= props.state.tasks.filter(task=>task.tag ===tag)
+        var tagtasks= props.state.tasks.filter(task=>task.tag ===tag && ['Personal','Miscellaneous'].includes(task.taskType))
 
         return tagtasks.map((task,i) => {
             return (
