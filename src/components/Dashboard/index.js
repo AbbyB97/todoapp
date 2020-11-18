@@ -62,7 +62,7 @@ const DashBoard = (props) => {
                 </div>
                 <div className="tasks-container">
                 { find(props.state.tasks,(task)=>{return task.tag==="To-do" && props.state.showTaskType.includes(task.taskType)})? 
-                 <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
+                 <div style={{marginTop:"1.5rem",backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
                  <div style={{textAlign:"center",backgroundColor:"#f2c94c",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
                      <h3 style={{padding:"0.27rem",color:"white"}}>To do</h3>
              </div>
@@ -71,7 +71,7 @@ const DashBoard = (props) => {
                 : null}
                
                { find(props.state.tasks,(task)=>{return task.tag==="In-Progress" && props.state.showTaskType.includes(task.taskType)})? 
-                <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
+                <div style={{marginTop:"1.5rem",backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
                     <div style={{textAlign:"center",backgroundColor:"#21ba45",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
                         <h3 style={{padding:"0.27rem",color:"white"}}>In-progress</h3>
                 </div>
@@ -79,7 +79,7 @@ const DashBoard = (props) => {
                 </div>
                 : null}
                { find(props.state.tasks,(task)=>{return task.tag==="Done" && props.state.showTaskType.includes(task.taskType)})? 
-                <div style={{backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
+                <div style={{marginTop:"1.5rem",backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
                     <div style={{textAlign:"center",backgroundColor:"#2f80ed",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
                         <h3 style={{padding:"0.27rem",color:"white"}}>Done</h3>
                 </div>
