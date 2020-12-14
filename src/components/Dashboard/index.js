@@ -1,112 +1,227 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import { logout } from '../../actions';
-import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import {find} from 'lodash';
-
-import '../Dashboard/Dashboard.scss';
-import StaticDatePicker from '../widgets/StaticDatePicker';
-import TaskCard from '../widgets/TaskCard'
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { logout } from "../../actions";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { find } from "lodash";
+import "../Dashboard/Dashboard.scss";
+import StaticDatePicker from "../widgets/StaticDatePicker";
+import TaskCard from "../widgets/TaskCard";
 
 const DashBoard = (props) => {
-    console.log('show type  -- - -',props.state.showTaskType);
+  console.log("show type  -- - -", props.state.showTaskType);
 
-    const [taskDate, setTaskDate] = useState(new Date());
-    // const [Show, setShow] = useState(['Personal','Official','Miscellaneous']);
+  console.log(
+    "props.state.showTaskType[0]" +
+      !find(props.state.tasks, { taskType: props.state.showTaskType[0] })
+  );
 
-    let history = useHistory();
-    const handleCreateTaskButton = () => {
-        history.push('/createtask');
-    }
-    const handleEditTaskButton = () => {
-        history.push('/edittask');
-    }
-    const handleAnalyticskButton = () => {
-        history.push('/analytics');
-    }
+  const [taskDate, setTaskDate] = useState(new Date());
 
-    const handleLogout = () => {
-        console.log('handle logout');
-        props.logout();
-    }
-    const renderTaskLists = (tag) => {
-        console.log('show type  -- - -',props.state.showTaskType);
-        var tagtasks= props.state.tasks.filter(task=>task.tag ===tag && props.state.showTaskType.includes(task.taskType))
+  // const [Show, setShow] = useState(['Personal','Official','Miscellaneous']);
 
-        return tagtasks.map((task,i) => {
-            return (
-                <TaskCard key={i} task={task} />
-            );
-        })
+  let history = useHistory();
+  const handleCreateTaskButton = () => {
+    history.push("/createtask");
+  };
+  const handleEditTaskButton = () => {
+    history.push("/edittask");
+  };
+  const handleAnalyticskButton = () => {
+    history.push("/analytics");
+  };
 
-    }
-    return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <div className="dashboard">
-                <div className="ui hidden divider"></div>
-
-                <div className="top-row">
-                    <div id="search-bar" className="ui icon input search">
-                        <input style={{ paddingLeft: "1rem" }} className="prompt" type="text" placeholder="Search Tasks..." />
-                        <i className="search icon"></i>
-                    </div>
-
-                    <div>
-                        <button onClick={handleCreateTaskButton} class="positive ui button">New Task</button>
-                    </div>
-                    <div>
-                        <StaticDatePicker keyboardPicker={true} taskDate={taskDate} setTaskDate={setTaskDate} />
-                    </div>
-                </div>
-                <div className="tasks-container">
-                { find(props.state.tasks,(task)=>{return task.tag==="To-do" && props.state.showTaskType.includes(task.taskType)})? 
-                 <div style={{marginTop:"1.5rem",backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
-                 <div style={{textAlign:"center",backgroundColor:"#f2c94c",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
-                     <h3 style={{padding:"0.27rem",color:"white"}}>To do</h3>
-             </div>
-             {renderTaskLists("To-do")}
-             </div>
-                : null}
-               
-               { find(props.state.tasks,(task)=>{return task.tag==="In-Progress" && props.state.showTaskType.includes(task.taskType)})? 
-                <div style={{marginTop:"1.5rem",backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
-                    <div style={{textAlign:"center",backgroundColor:"#21ba45",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
-                        <h3 style={{padding:"0.27rem",color:"white"}}>In-progress</h3>
-                </div>
-                {renderTaskLists("In-Progress")}
-                </div>
-                : null}
-               { find(props.state.tasks,(task)=>{return task.tag==="Done" && props.state.showTaskType.includes(task.taskType)})? 
-                <div style={{marginTop:"1.5rem",backgroundColor:"#f8f8f9",width:"300px",border:"red"}}>
-                    <div style={{textAlign:"center",backgroundColor:"#2f80ed",borderTopRightRadius:"0.5rem",borderTopLeftRadius:"0.5rem"}}>
-                        <h3 style={{padding:"0.27rem",color:"white"}}>Done</h3>
-                </div>
-                {renderTaskLists("Done")}
-                </div>
-                : null}
-
-                </div> 
-            {props.state.tasks.length===0?
-            // <div style={{marginTop:"5rem",textAlign:"center",backgroundColor:"red"}}> <h2>Please add some tasks!</h2></div>
-            <div style={{textAlign:"center",height:"5rem",backgroundColor:"#2f80ed",cursor:"pointer",
-                    borderTopRightRadius:"0.5rem",borderRadius:"0.5rem",width:"18rem",margin:"auto",marginTop:"5vh"}}
-                 onClick={handleCreateTaskButton}
-                    >
-                <h3 style={{padding:"1.5rem",color:"white"}}>Please add Some tasks!</h3>
-                </div>
-            :
-            null
-            }
-            
-
-            </div>
-        </MuiPickersUtilsProvider>
+  const handleLogout = () => {
+    console.log("handle logout");
+    props.logout();
+  };
+  const renderTaskLists = (tag) => {
+    console.log("show type  -- - -", props.state.showTaskType);
+    var tagtasks = props.state.tasks.filter(
+      (task) =>
+        task.tag === tag && props.state.showTaskType.includes(task.taskType)
     );
-}
+
+    return tagtasks.map((task, i) => {
+      return <TaskCard key={i} task={task} />;
+    });
+  };
+  return (
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <div className="dashboard">
+        <div className="ui hidden divider"></div>
+
+        <div className="top-row">
+          <div id="search-bar" className="ui icon input search">
+            <input
+              style={{ paddingLeft: "1rem" }}
+              className="prompt"
+              type="text"
+              placeholder="Search Tasks..."
+            />
+            <i className="search icon"></i>
+          </div>
+
+          <div>
+            <button
+              onClick={handleCreateTaskButton}
+              className="positive ui button"
+            >
+              New Task
+            </button>
+          </div>
+          <div>
+            <StaticDatePicker
+              keyboardPicker={true}
+              taskDate={taskDate}
+              setTaskDate={setTaskDate}
+            />
+          </div>
+        </div>
+        <div className="tasks-container">
+          {find(props.state.tasks, (task) => {
+            return (
+              task.tag === "To-do" &&
+              props.state.showTaskType.includes(task.taskType)
+            );
+          }) ? (
+            <div
+              style={{
+                marginTop: "1.5rem",
+                backgroundColor: "#f8f8f9",
+                width: "300px",
+                border: "red",
+              }}
+            >
+              <div
+                style={{
+                  textAlign: "center",
+                  backgroundColor: "#f2c94c",
+                  borderTopRightRadius: "0.5rem",
+                  borderTopLeftRadius: "0.5rem",
+                }}
+              >
+                <h3 style={{ padding: "0.27rem", color: "white" }}>To do</h3>
+              </div>
+              {renderTaskLists("To-do")}
+            </div>
+          ) : null}
+
+          {find(props.state.tasks, (task) => {
+            return (
+              task.tag === "In-Progress" &&
+              props.state.showTaskType.includes(task.taskType)
+            );
+          }) ? (
+            <div
+              style={{
+                marginTop: "1.5rem",
+                backgroundColor: "#f8f8f9",
+                width: "300px",
+                border: "red",
+              }}
+            >
+              <div
+                style={{
+                  textAlign: "center",
+                  backgroundColor: "#21ba45",
+                  borderTopRightRadius: "0.5rem",
+                  borderTopLeftRadius: "0.5rem",
+                }}
+              >
+                <h3 style={{ padding: "0.27rem", color: "white" }}>
+                  In-progress
+                </h3>
+              </div>
+              {renderTaskLists("In-Progress")}
+            </div>
+          ) : null}
+          {find(props.state.tasks, (task) => {
+            return (
+              task.tag === "Done" &&
+              props.state.showTaskType.includes(task.taskType)
+            );
+          }) ? (
+            <div
+              style={{
+                marginTop: "1.5rem",
+                backgroundColor: "#f8f8f9",
+                width: "300px",
+                border: "red",
+              }}
+            >
+              <div
+                style={{
+                  textAlign: "center",
+                  backgroundColor: "#2f80ed",
+                  borderTopRightRadius: "0.5rem",
+                  borderTopLeftRadius: "0.5rem",
+                }}
+              >
+                <h3 style={{ padding: "0.27rem", color: "white" }}>Done</h3>
+              </div>
+              {renderTaskLists("Done")}
+            </div>
+          ) : null}
+        </div>
+        {props.state.tasks.length === 0 && props.state.showTaskType.length !== 1? (
+          // <div style={{marginTop:"5rem",textAlign:"center",backgroundColor:"red"}}> <h2>Please add some tasks!</h2></div>
+         <div>
+              <h3 style={{textAlign:"center",marginTop:"2rem"}}> No tasks found </h3>
+              <div
+            style={{
+              textAlign: "center",
+              height: "5rem",
+              backgroundColor: "#2f80ed",
+              cursor: "pointer",
+              borderTopRightRadius: "0.5rem",
+              borderRadius: "0.5rem",
+              width: "18rem",
+              margin: "auto",
+              marginTop: "5vh",
+            }}
+            onClick={handleCreateTaskButton}
+          >
+            <h3 style={{ padding: "1.5rem", color: "white" }}>
+              Please add Some tasks!
+            </h3>
+          </div>
+         </div>
+    
+        ) : null}
+
+        {props.state.showTaskType.length === 1 &&
+        !find(props.state.tasks, { taskType: props.state.showTaskType[0] }) ? (
+          // <div style={{marginTop:"5rem",textAlign:"center",backgroundColor:"red"}}> <h2>Please add some tasks!</h2></div>
+          <div>
+              <h3 style={{textAlign:"center",marginTop:"2rem"}}> No {props.state.showTaskType[0]} tasks found </h3>
+            <div
+              style={{
+                textAlign: "center",
+                height: "5rem",
+                backgroundColor: "#2f80ed",
+                cursor: "pointer",
+                borderTopRightRadius: "0.5rem",
+                borderRadius: "0.5rem",
+                width: "18rem",
+                margin: "auto",
+                marginTop: "5vh",
+              }}
+              onClick={handleCreateTaskButton}
+            >
+              <h3 style={{ padding: "1.5rem", color: "white" }}>
+                Please add Some tasks!
+              </h3>
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </MuiPickersUtilsProvider>
+  );
+};
 
 const mapStateToProps = (state) => {
-    return { state: state }
-}
+  return { state: state };
+};
 export default connect(mapStateToProps, { logout })(DashBoard);

@@ -94,7 +94,7 @@ const TaskCard = ( props ) => {
                     aria-haspopup="true"
                     onClick={cardOptionsClick}
                     style={{ cursor: "pointer",marginTop:"0.5rem" }}
-                    class="ellipsis vertical grey icon" />
+                    className="ellipsis vertical grey icon" />
                 <CardMenu task={props.task}/>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>

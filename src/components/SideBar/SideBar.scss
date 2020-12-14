@@ -13,11 +13,11 @@
     
         }
         .side-bar-content{
-        border-right:solid black 1px;
-        border-bottom:solid black 1px;
+        // border-right:solid black 1px;
+        // border-bottom:solid black 1px;
 
             position: fixed;
-            background-color: #ffff;
+            background-color: #c3d6c8;
             display: flex;
             justify-content: space-between;
             z-index: 10;
@@ -34,7 +34,6 @@
 
             }
             .profile-container{
-                background-color: #ffffff;
 
                 
                 overflow-wrap: anywhere;
@@ -64,12 +63,11 @@
                 display: flex;
                 @include bp("phone"){
                     flex-direction: row;
-                color: black;
+                color: white;
 
                 }
                 @include bp("tablet"){
                     flex-direction:column;
-                background-color: #f2f2f2;
                 color: white;
 
 
